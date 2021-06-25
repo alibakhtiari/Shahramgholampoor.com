@@ -1,0 +1,33 @@
+#Force non-www:
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^www\.shahramgholampoor\.com [NC]
+RewriteRule ^(.*)$ http://shahramgholampoor.com/$1 [L,R=301]
+#Alternate default index page
+DirectoryIndex home.html
+#example.com/page will display the contents of example.com/page.html
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.+)$ $1.html [L,QSA]
+
+#301 from example.com/page.html to example.com/page
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /.*\.html\ HTTP/
+RewriteRule ^(.*)\.html$ /$1 [R=301,L]
+
+SetEnvIfNoCase Request_URI \.(?:ogv|ogg|oga|m4v|mp4|m4a|mp3|wav|webma?|webmv)$ no-gzip dont-vary  
+  
+AddType video/ogg .ogv  
+AddType video/mp4 .m4v .mp4  
+AddType video/webm .webm .webmv
+AddType audio/mpeg .mp3  
+AddType audio/mp4 .m4a  
+AddType audio/ogg .ogg .oga  
+AddType audio/webm .webma  
+AddType audio/wav .wav 
+
+# php -- BEGIN cPanel-generated handler, do not edit
+# Set the “ea-php72” package as the default “PHP” programming language.
+<IfModule mime_module>
+  AddHandler application/x-httpd-ea-php72 .php .php7 .phtml
+</IfModule>
+# php -- END cPanel-generated handler, do not edit
