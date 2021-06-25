@@ -82,26 +82,20 @@
                 </div>
                 <div id="success_message" style="width:100%; height:100%; display:none; "> <h2>Success! Your Message was Sent Successfully.</h2> </div>
             </div>
-            <div id="foot" class="footer animated fadeInUp">
-                <p>© 2017 Shahram Gholampoor</p>
+            <footer id="foot" class="footer animated fadeInUp">
+                <h2>    &copy; <span id="year"></span> Shahram Gholampoor</h2>
                 <p>Design by : Studio HEH | Hamed Jaberha</p>
-            </div>
+                <p>Developed at <a href="https://webabc.ir">WebABC</a></p>
+              </footer>
+<style>    .footer a {display: inline-block;padding: 0;text-decoration: underline;font-weight: bold;}</style>
         </div>
     </div>
     <style>.instagram,.linkedin,.soundcloud,.spotify{width:16px;height:16px}.facebook,.instagram,.linkedin,.soundcloud,.spotify{display:inline-block;background:url(assets/img/png.png) no-repeat;overflow:hidden;margin:10px}.s-icon{text-align:left}@media (max-width:992px){.s-icon{text-align:center}.c-form{margin-bottom:100px}}.instagram{background-position:-1px 0}.linkedin{background-position:-1px -17px}.soundcloud{background-position:-1px -34px}.spotify{background-position:-1px -51px}.facebook{background-position:-1px -68px;width:14px;height:14px}</style>
     <script type="text/javascript" src="assets/js/jquery.min.js"></script>
     <script type="text/javascript" src="assets/js/form.js"></script>
-    <!--<script>
-    var uploadField = document.getElementById("file");
-
-uploadField.onchange = function() {
-    if(this.files[0].size > 307200){
-       alert("File is too big!");
-       document.getElementById('file_alert').innerHTML = "File is too big!";
-       this.value = "";
-    };
-};
-    </script>-->
+    <script>
+        document.getElementById("year").innerHTML = new Date().getFullYear();
+      </script>
 </body>
 
 </html>
