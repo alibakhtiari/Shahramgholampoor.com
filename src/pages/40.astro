@@ -1,0 +1,39 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PlayerIcons from '../components/PlayerIcons.astro';
+import { Image } from 'astro:assets';
+import al40Img from '../assets/img/40.png';
+import '../styles/aplayer.css';
+---
+
+<Layout title="40 – Shahram Gholampoor" bodyClass="m-player forty full-width" activePage="albums">
+    <div class="col al-sadeh">
+        <div class="animated fadeIn">
+            <div id="mainwrap">
+                <div class="albums-art">
+                    <Image src={al40Img} alt="40 Album Art" />
+                </div>
+                <audio controls data-options='{"prefix":"media","show":{"volume":false,"fullscreen":false},"lang":{"currentTime":"current time","minutes":"minutes","mute":"mute","play":"play","remainingTime":"remaining time","seconds":"seconds","volume":"volume"}}'></audio>
+                <ul class="play-list" id="list">
+                    <li class="play-item"><a class="play-link" data="/assets/music/40/01 The Birth.mp3">01. The Birth</a></li>
+                    <li class="play-item"><a class="play-link" data="/assets/music/40/02 Infantile.mp3">02. Infantile</a></li>
+                    <li class="play-item"><a class="play-link" data="/assets/music/40/03 Melancholy Morning.mp3">03. Melancholy Morning</a></li>
+                    <li class="play-item"><a class="play-link" data="/assets/music/40/04 The Next.mp3">04. The Next</a></li>
+                    <li class="play-item"><a class="play-link" data="/assets/music/40/05 Flight.mp3">05. Flight</a></li>
+                    <li class="play-item"><a class="play-link" data="/assets/music/40/06 Desertion.mp3">06. Desertion</a></li>
+                    <li class="play-item"><a class="play-link" data="/assets/music/40/07 Forsaken.mp3">07. Forsaken</a></li>
+                    <li class="play-item"><a class="play-link" data="/assets/music/40/08 The Boy.mp3">08. The Boy</a></li>
+                    <li class="play-item"><a class="play-link" data="/assets/music/40/09 Little Sorrows.mp3">09. Little Sorrows</a></li>
+                    <li class="play-item"><a class="play-link" data="/assets/music/40/10 My Sister&#39;s Dolls.mp3">10. My Sister's Dolls</a></li>
+                    <li class="play-item"><a class="play-link" data="/assets/music/40/11 Grief.mp3">11. Grief</a></li>
+                    <li class="play-item"><a class="play-link" data="/assets/music/40/12 Infantine (Piano Version).mp3">12. Infantine (Piano Version)</a></li>
+                    <li class="play-item"><a class="play-link" data="/assets/music/40/13 Remorse.mp3">13. Remorse</a></li>
+                    <li class="play-item"><a class="play-link" data="/assets/music/40/14 Salvation.mp3">14. Salvation</a></li>
+                </ul>
+                <div class="apple center"><a href="https://itunes.apple.com/us/album/40/1228537087" target="_blank"></a></div>
+            </div>
+        </div>
+    </div>
+    <PlayerIcons />
+    <script is:inline src="../scripts/aplayer.min.js"></script>
+</Layout>

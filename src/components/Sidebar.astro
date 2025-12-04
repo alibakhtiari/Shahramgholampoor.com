@@ -1,0 +1,18 @@
+---
+const { activePage } = Astro.props;
+---
+<div class="col vertical-nav">
+    <div class="logo-desk animated fadeInLeft">
+        <h1><strong>Shahram</strong> Gholampoor</h1>
+        <h2>Official Website</h2>
+    </div>
+    <div class="vert-menu">
+        <ul id="animated" class="menu fadeInLeft animated delay-1s">
+            <li class:list={["menu-item", { active: activePage === 'home' }]}><a href="/">Home</a></li>
+            <li class:list={["menu-item", { active: activePage === 'albums' }]}><a href="/albums">Albums</a></li>
+            <li class:list={["menu-item", { active: activePage === 'video' }]}><a href="/video">Video</a></li>
+            <li class:list={["menu-item", { active: activePage === 'about' }]}><a href="/about">About</a></li>
+            <li class:list={["menu-item", { active: activePage === 'contact' }]}><a href="/contact">Contact</a></li>
+        </ul>
+    </div>
+</div>

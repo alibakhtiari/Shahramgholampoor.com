@@ -1,0 +1,256 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+
+// Video Data
+const videos = [
+    { id: '2022', title: '2022', src: 'https://raw.githubusercontent.com/alibakhtiari/Shahramgholampoor.com/main/assets/vid/2022.mp4', thumb: '/assets/vid/2022.t.jpg', poster: '/assets/vid/2022.jpg' },
+    { id: '2018.6', title: '2018.6', src: 'https://raw.githubusercontent.com/alibakhtiari/Shahramgholampoor.com/main/assets/vid/2018.6.mp4', thumb: '/assets/vid/2018.6t.jpg', poster: '/assets/vid/2018.6.jpg' },
+    { id: '2018.5', title: '2018.5', src: 'https://raw.githubusercontent.com/alibakhtiari/Shahramgholampoor.com/main/assets/vid/2018.5.mp4', thumb: '/assets/vid/2018.5t.jpg', poster: '/assets/vid/2018.5.jpg' },
+    { id: '2018.4', title: '2018.4', src: 'https://raw.githubusercontent.com/alibakhtiari/Shahramgholampoor.com/main/assets/vid/2018.4.mp4', thumb: '/assets/vid/2018.4t.jpg', poster: '/assets/vid/2018.4.jpg' },
+    { id: '2018.3', title: '2018.3', src: 'https://raw.githubusercontent.com/alibakhtiari/Shahramgholampoor.com/main/assets/vid/2018.3.mp4', thumb: '/assets/vid/2018.3t.jpg', poster: '/assets/vid/2018.3.jpg' },
+    { id: '2018.2', title: '2018.2', src: 'https://raw.githubusercontent.com/alibakhtiari/Shahramgholampoor.com/main/assets/vid/2018.2.mp4', thumb: '/assets/vid/2018.2t.jpg', poster: '/assets/vid/2018.2.jpg' },
+    { id: '2017', title: '2017', src: '/assets/vid/2017.mp4', thumb: '/assets/vid/2017t.jpg', poster: '/assets/vid/2017.jpg' },
+    { id: '2008', title: '2008', src: '/assets/vid/2008.mp4', thumb: '/assets/vid/2008t.jpg', poster: '/assets/vid/2008.jpg' },
+    { id: '1998', title: '1998', src: '/assets/vid/1998.mp4', thumb: '/assets/vid/1998t.jpg', poster: '/assets/vid/1998.jpg' },
+];
+
+const initialVideo = videos[0];
+---
+
+<Layout title="Videos – Shahram Gholampoor" bodyClass="videos full-width" activePage="video">
+    <div class="video-container animated fadeIn">
+        <!-- Main Player -->
+        <div class="main-player-wrapper">
+            <video 
+                id="main-video" 
+                controls 
+                poster={initialVideo.poster}
+                src={initialVideo.src}
+                class="main-video"
+            >
+                Your browser does not support the video tag.
+            </video>
+        </div>
+
+        <!-- Video Selector (Carousel) -->
+        <div class="video-selector">
+            <div class="carousel-container">
+                <button class="nav-btn prev" aria-label="Previous videos">
+                    <svg viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+                </button>
+                
+                <div class="carousel-track" id="video-track">
+                    {videos.map((video, index) => (
+                        <div class={`carousel-item ${index === 0 ? 'active' : ''}`} data-src={video.src} data-poster={video.poster}>
+                            <div class="thumb-wrapper">
+                                <img src={video.thumb} alt={`Video ${video.title}`} loading="lazy" />
+                                <div class="play-overlay">
+                                    <svg viewBox="0 0 24 24" width="32" height="32"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+
+                <button class="nav-btn next" aria-label="Next videos">
+                    <svg viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+</Layout>
+
+<script>
+    document.addEventListener('astro:page-load', () => {
+        const mainVideo = document.getElementById('main-video') as HTMLVideoElement;
+        const track = document.getElementById('video-track');
+        const items = document.querySelectorAll('.carousel-item');
+        const prevBtn = document.querySelector('.nav-btn.prev');
+        const nextBtn = document.querySelector('.nav-btn.next');
+
+        if (!mainVideo || !track) return;
+
+        // Handle Video Selection
+        items.forEach(item => {
+            item.addEventListener('click', () => {
+                const src = item.getAttribute('data-src');
+                const poster = item.getAttribute('data-poster');
+                
+                if (src && src !== mainVideo.src) {
+                    // Update Active State
+                    items.forEach(i => i.classList.remove('active'));
+                    item.classList.add('active');
+
+                    // Update Video
+                    mainVideo.src = src;
+                    mainVideo.poster = poster || '';
+                    mainVideo.play();
+                    
+                    // Scroll into view if needed
+                    item.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                }
+            });
+        });
+
+        // Handle Carousel Navigation
+        const scrollAmount = 200; // Adjust based on item width
+
+        prevBtn?.addEventListener('click', () => {
+            track.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+        });
+
+        nextBtn?.addEventListener('click', () => {
+            track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        });
+    });
+</script>
+
+<style>
+    .video-container {
+        width: 100%;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        /* Center vertically in the layout if needed, or margin-top handled by global css */
+        margin-top: 80px; 
+    }
+
+    /* Main Player */
+    .main-player-wrapper {
+        width: 100%;
+        aspect-ratio: 16/9;
+        background: #000;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .main-video {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    /* Selector Carousel */
+    .video-selector {
+        width: 100%;
+        background: rgba(0, 0, 0, 0.4);
+        backdrop-filter: blur(10px);
+        border-radius: 12px;
+        padding: 15px;
+        border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .carousel-container {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .carousel-track {
+        display: flex;
+        gap: 15px;
+        overflow-x: auto;
+        scroll-behavior: smooth;
+        padding: 5px;
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE/Edge */
+    }
+
+    .carousel-track::-webkit-scrollbar {
+        display: none; /* Chrome/Safari */
+    }
+
+    .carousel-item {
+        flex: 0 0 160px; /* Fixed width thumbnails */
+        aspect-ratio: 16/9;
+        cursor: pointer;
+        border-radius: 8px;
+        overflow: hidden;
+        position: relative;
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+        opacity: 0.7;
+    }
+
+    .carousel-item:hover {
+        opacity: 1;
+        transform: translateY(-2px);
+    }
+
+    .carousel-item.active {
+        opacity: 1;
+        border-color: #fff;
+        box-shadow: 0 0 15px rgba(255,255,255,0.2);
+    }
+
+    .thumb-wrapper {
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+
+    .thumb-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .play-overlay {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(0,0,0,0.3);
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+
+    .carousel-item:hover .play-overlay {
+        opacity: 1;
+    }
+
+    .play-overlay svg {
+        color: #fff;
+        filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+    }
+
+    /* Navigation Buttons */
+    .nav-btn {
+        background: rgba(255,255,255,0.1);
+        border: none;
+        color: #fff;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.2s;
+        flex-shrink: 0;
+    }
+
+    .nav-btn:hover {
+        background: rgba(255,255,255,0.2);
+        transform: scale(1.1);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .video-container {
+            padding: 10px;
+            margin-top: 60px;
+        }
+
+        .carousel-item {
+            flex: 0 0 120px;
+        }
+    }
+</style>

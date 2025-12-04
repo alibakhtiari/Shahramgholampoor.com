@@ -1,0 +1,40 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PlayerIcons from '../components/PlayerIcons.astro';
+import { Image } from 'astro:assets';
+import sadehImg from '../assets/img/sadeh.png';
+import '../styles/aplayer.css';
+---
+
+<Layout title="Sadeh – Shahram Gholampoor" bodyClass="m-player sadeh full-width" activePage="albums">
+    <div class="col al-sadeh">
+        <div class="animated fadeIn">
+            <div id="mainwrap">
+                <div class="albums-art">
+                    <Image src={sadehImg} alt="Sadeh Album Art" />
+                </div>
+                <audio controls data-options='{"prefix":"media","show":{"volume":false,"fullscreen":false},"lang":{"currentTime":"current time","minutes":"minutes","mute":"mute","play":"play","remainingTime":"remaining time","seconds":"seconds","volume":"volume"}}'></audio>
+                <ul class="play-list" id="list">
+                    <li class="play-item"><a class="play-link" data="/assets/music/sadeh/01 The First Day.mp3">01. The First Day</a></li>
+                    <li class="play-item"><a class="play-link" data="/assets/music/sadeh/02 Under the Rain.mp3">02. Under the Rain</a></li>
+                    <li class="play-item"><a class="play-link" data="/assets/music/sadeh/03 The Wait.mp3">03. The Wait</a></li>
+                    <li class="play-item"><a class="play-link" data="/assets/music/sadeh/04 Not a Song.mp3">04. Not a Song</a></li>
+                    <li class="play-item"><a class="play-link" data="/assets/music/sadeh/05 248.mp3">05. 248</a></li>
+                    <li class="play-item"><a class="play-link" data="/assets/music/sadeh/06 Without You.mp3">06. Without You</a></li>
+                    <li class="play-item"><a class="play-link" data="/assets/music/sadeh/07 Sadeh.mp3">07. Sadeh</a></li>
+                    <li class="play-item"><a class="play-link" data="/assets/music/sadeh/08 Maybe.mp3">08. Maybe</a></li>
+                    <li class="play-item"><a class="play-link" data="/assets/music/sadeh/09 The fifth day.mp3">09. The Fifth Day</a></li>
+                    <li class="play-item"><a class="play-link" data="/assets/music/sadeh/10 Rain Again.mp3">10. Rain Again</a></li>
+                    <li class="play-item"><a class="play-link" data="/assets/music/sadeh/11 StarLess.mp3">11. StarLess</a></li>
+                    <li class="play-item"><a class="play-link" data="/assets/music/sadeh/12 Departed.mp3">12. Departed</a></li>
+                    <li class="play-item"><a class="play-link" data="/assets/music/sadeh/13 Farewell.mp3">13. Farewell</a></li>
+                    <li class="play-item"><a class="play-link" data="/assets/music/sadeh/14 Yearning.mp3">14. Yearning</a></li>
+                    <li class="play-item"><a class="play-link" data="/assets/music/sadeh/15 13 57 32.mp3">15. 13:57:32</a></li>
+                </ul>
+                <div class="apple center"><a href="https://itunes.apple.com/us/album/sadeh/1228553841" target="_blank"></a></div>
+            </div>
+        </div>
+    </div>
+    <PlayerIcons />
+    <script is:inline src="../scripts/aplayer.min.js"></script>
+</Layout>

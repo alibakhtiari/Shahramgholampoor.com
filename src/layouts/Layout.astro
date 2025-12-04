@@ -1,0 +1,65 @@
+---
+import { ViewTransitions } from 'astro:transitions';
+import '../styles/global.css';
+import Sidebar from '../components/Sidebar.astro';
+import MobileMenu from '../components/MobileMenu.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+	title: string;
+    description?: string;
+    image?: string;
+    bodyClass?: string;
+    activePage?: string;
+}
+
+const { title, description = "Composer, pianist and violinist based in Tehran, Iran", image = "/og-image.jpg", bodyClass = "home full-width", activePage = "home" } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="en-US">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <link rel="manifest" href="/site.webmanifest">
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+        <meta name="description" content={description} />
+        <link rel="canonical" href={canonicalURL} />
+        <meta name="keywords" content="Composer,Pianist,Violinist">
+        <meta name="theme-color" content="#ffffff">
+
+        <!-- Open Graph -->
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={canonicalURL} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:image" content={new URL(image, Astro.url)} />
+        <meta property="og:image:width" content="1920">
+        <meta property="og:image:height" content="1005">
+
+        <!-- Twitter -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={new URL(image, Astro.url)} />
+        <meta name="twitter:image:alt" content="Shahram Gholampoor">
+
+		<ViewTransitions />
+	</head>
+	<body class={bodyClass}>
+        <div class="row container">
+            <div class="full-height row-content-wrap">
+                <MobileMenu activePage={activePage} />
+                <Sidebar activePage={activePage} />
+                <slot />
+                <Footer />
+            </div>
+        </div>
+	</body>
+</html>

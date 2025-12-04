@@ -1,0 +1,15 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import sadehHome from '../assets/img/sadeh-home.png';
+---
+
+<Layout title="Shahram Gholampoor – Official Website" activePage="home">
+    <div class="col spacer"></div>
+    <div id="sadeh" class="col sadeh animated fadeIn delay-1s slow">
+        <a href="/sadeh" target="_self">
+            <Image src={sadehHome} alt="Shahram Gholampoor - Sadeh" />
+            <p style="display:none">Shahram Gholampoor Composer, pianist and violinist based in Tehran, Iran</p>
+        </a>
+    </div>
+</Layout>
