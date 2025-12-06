@@ -25,3 +25,6 @@ pnpm-debug.log*
 
 # Legacy
 legacy_html/
+
+# Lock files
+package-lock.json
