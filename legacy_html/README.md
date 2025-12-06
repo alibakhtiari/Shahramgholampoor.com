@@ -1,2 +1,0 @@
-# Shahramgholampoor.com
-Shahramgholampoor.com
