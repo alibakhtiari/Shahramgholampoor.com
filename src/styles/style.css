@@ -250,9 +250,11 @@ ul {
     background-color: rgba(255, 255, 255, .2);
     border-radius: 2px
 }
+
 .videos {
     overflow-y: hidden
 }
+
 .vert-menu .menu,
 .vert-menu .menu>li {
     font-size: 13px;
@@ -334,33 +336,39 @@ textarea#form_message {
 }
 
 @media (max-width:992px) {
+
     .about,
     .about .img {
         width: 100%
     }
-    .videos
-    .video {
+
+    .videos .video {
         width: 90%;
         margin: 0 auto;
         float: none
     }
+
     .about .text {
         padding: 0;
         text-align: justify;
         margin: 30px
     }
+
     .logo-desk,
     .vert-menu {
         display: none
     }
+
     .logo-mobile,
     .mobile-menu {
         display: block
     }
+
     .active a {
         font-size: 12px;
         font-weight: 400
     }
+
     #sadeh img,
     div#mainwrap {
         background-color: rgba(0, 0, 0, .4);
@@ -368,26 +376,32 @@ textarea#form_message {
         max-width: 100%;
         margin: 0
     }
+
     ul#menu-menu-1 {
         display: inline-flex
     }
+
     .logo-mobile {
         background-color: rgba(0, 0, 0, .4);
         margin: 20px auto;
         max-width: 40%;
         padding: 10px
     }
+
     .footer {
         margin-left: 20px
     }
+
     .al-sadeh,
     .album {
         margin-top: 20px
     }
+
     .logo-desk,
     .vert-menu .menu {
         display: none
     }
+
     .home .sadeh {
         max-width: none;
         width: 100% !important;
@@ -398,6 +412,7 @@ textarea#form_message {
         flex: 0 1 auto;
         text-align: center
     }
+
     .spacer,
     .vertical-nav {
         max-width: none;
@@ -408,9 +423,11 @@ textarea#form_message {
         -ms-flex: 0 1 auto;
         flex: 0 1 auto
     }
+
     div#mainwrap {
         margin: 0 auto
     }
+
     .albums .sadeh,
     .albums .al40 {
         width: 50%
@@ -418,69 +435,86 @@ textarea#form_message {
 }
 
 @media (max-width:768px) {
+
     .home .sadeh,
     .spacer,
     .vertical-nav {
         clear: none;
         max-width: none
     }
+
     .home .sadeh,
     .info p {
         text-align: center
     }
+
     .about {
         width: 100%
     }
+
     .about .img {
         content: url(../img/about.m.jpg);
         width: 90%;
         margin: 0 auto
     }
+
     .col,
     .home .sadeh {
         width: 100% !important
     }
+
     .about .text {
         padding: 0
     }
+
     .logo-mobile {
         max-width: 60%
     }
+
     .logo-desk,
     .vert-menu {
         display: none
     }
+
     .logo-mobile,
     .mobile-menu {
         display: block
     }
+
     .col {
         margin: 20px auto
     }
+
     .footer {
         margin-left: 20px
     }
+
     .spacer,
     .vertical-nav {
         width: 0 !important
     }
+
     .vertical-nav {
         float: left
     }
+
     .al-sadeh,
     .album {
         margin: 0
     }
+
     input#form_email,
     input#form_name,
     textarea#form_message {
         width: 94%;
         padding: 3%
     }
+
     #contact-form {
         width: 90%;
         margin: 0 auto
     }
+
     .video {
         width: auto
     }
@@ -524,9 +558,11 @@ textarea#form_message {
         box-shadow: none;
         width: 980px
     }
+
     .full-width .row {
         width: auto
     }
+
     .container {
         margin: 40px 0
     }
@@ -537,6 +573,7 @@ textarea#form_message {
         opacity: 0;
         transform: translate3d(-100%, 0, 0)
     }
+
     to {
         opacity: 1;
         transform: translate3d(0, 0, 0)
@@ -551,6 +588,7 @@ textarea#form_message {
     from {
         opacity: 0
     }
+
     to {
         opacity: 1
     }
@@ -565,6 +603,7 @@ textarea#form_message {
         opacity: 0;
         transform: translate3d(0, -100%, 0)
     }
+
     to {
         opacity: 1;
         transform: translate3d(0, 0, 0)
@@ -580,6 +619,7 @@ textarea#form_message {
         opacity: 0;
         transform: translate3d(0, 100%, 0)
     }
+
     to {
         opacity: 1;
         transform: translate3d(0, 0, 0)
@@ -841,7 +881,7 @@ a.play-link {
 .apple a {
     display: inline-block;
     overflow: hidden;
-    background: url(../img/apple.png) no-repeat;
+    background: url(../assets/img/apple.png) no-repeat;
     width: 140px;
     height: 30px
 }
@@ -953,21 +993,28 @@ div#mainwrap {
     .glider-contain {
         width: 95%
     }
+
     .videos {
         overflow-y: auto
     }
+
     .glider-prev {
         left: -25px
     }
-    .multiple .glider-next, .multiple .glider-prev{
+
+    .multiple .glider-next,
+    .multiple .glider-prev {
         top: 15%
     }
+
     .glider-next {
         right: -21px
     }
+
     .glider-slide {
         min-height: 180px
     }
+
     .multiple .glider-slide {
         min-height: 100px
     }

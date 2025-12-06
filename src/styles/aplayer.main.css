@@ -4,6 +4,7 @@ div#mainwrap {
     max-width: 310px;
     margin-bottom: 100px
 }
+
 .media-toolbar {
     align-items: center;
     cursor: default;
@@ -12,12 +13,15 @@ div#mainwrap {
     flex-wrap: wrap;
     padding: 10px 0
 }
+
 .media-hidden {
     display: none
 }
-a.play-link{
+
+a.play-link {
     padding: 8px 20px
 }
+
 .media-media {
     display: block;
     margin-left: auto;
@@ -90,9 +94,10 @@ a.play-link{
     text-decoration: none
 }
 
-.media-control:focus{
+.media-control:focus {
     outline-color: transparent
 }
+
 .media-control:hover {
     background-color: rgba(255, 255, 255, .25);
     outline-color: transparent
@@ -111,52 +116,56 @@ a.play-link{
 
 /*demo playlist*/
 .media-media {
-	transition: max-height 600ms ease-in-out;
+    transition: max-height 600ms ease-in-out;
 }
 
 .media-media[src$=".mp3"] {
-	max-height: 0;
+    max-height: 0;
 }
 
 .play-list {
-	letter-spacing: .1em;
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
+    letter-spacing: .1em;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
 
 .play-item {
-	margin: 0;
-	padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 .play-list li {
-	cursor: pointer;
+    cursor: pointer;
     margin: 0;
     border-bottom: solid 1px
 }
-.play-list li:last-child{
+
+.play-list li:last-child {
     border: none
 }
-.play-link li{
+
+.play-link li {
     padding: 5px 0
 }
+
 .play-link:hover {
-	background-color: rgba(255,255, 255, .2);
+    background-color: rgba(255, 255, 255, .2);
     color: #fff
 }
 
 .play-link.active {
-	background-color: rgba(255,255, 255, .1);
+    background-color: rgba(255, 255, 255, .1);
 }
+
 .play-link.active:hover {
-	background-color: rgba(255,255, 255, .2);
+    background-color: rgba(255, 255, 255, .2);
 }
 
 .apple a {
     display: inline-block;
     overflow: hidden;
-    background: url(../img/apple.png) no-repeat;
+    background: url(../assets/img/apple.png) no-repeat;
     width: 140px;
     height: 30px
 }
@@ -171,6 +180,7 @@ a.play-link{
     background: rgba(255, 255, 255, .2);
     cursor: pointer
 }
-.albums-art{
+
+.albums-art {
     text-align: center
 }

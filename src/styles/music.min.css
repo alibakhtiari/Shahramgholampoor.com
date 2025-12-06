@@ -210,6 +210,7 @@ div#mainwrap {
     #nowPlay span#npAction {
         display: none
     }
+
     #nowPlay span#npTitle {
         display: block;
         text-align: center;
@@ -228,6 +229,7 @@ div#mainwrap {
         opacity: .5;
         transform: translateY(10px)
     }
+
     to {
         opacity: 1;
         transform: translateY(0)
@@ -238,6 +240,7 @@ div#mainwrap {
     from {
         opacity: 0
     }
+
     to {
         opacity: 1
     }
@@ -375,17 +378,20 @@ div#mainwrap {
 }
 
 @media (min-width:480px) {
+
     .plyr__controls .plyr__menu,
     .plyr__controls .plyr__progress,
     .plyr__controls .plyr__time,
     .plyr__controls>.plyr__control {
         margin-left: 10px
     }
+
     .plyr__controls .plyr__menu+.plyr__control,
     .plyr__controls>.plyr__control+.plyr__control,
     .plyr__controls>.plyr__control+.plyr__menu {
         margin-left: 5px
     }
+
     .plyr__volume {
         max-width: 50px
     }
@@ -511,6 +517,7 @@ div#mainwrap {
     .plyr__time+.plyr__time {
         display: none
     }
+
     div#mainwrap {
         margin: 0 auto
     }
@@ -640,7 +647,7 @@ div#mainwrap {
 .apple a {
     display: inline-block;
     overflow: hidden;
-    background: url(../img/apple.png) no-repeat;
+    background: url(../assets/img/apple.png) no-repeat;
     width: 140px;
     height: 30px
 }

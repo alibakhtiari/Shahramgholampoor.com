@@ -211,7 +211,7 @@ a.play-link {
 .apple a {
     display: inline-block;
     overflow: hidden;
-    background: url(../img/apple.png) no-repeat;
+    background: url(../assets/img/apple.png) no-repeat;
     width: 140px;
     height: 30px
 }
@@ -322,19 +322,24 @@ div#mainwrap {
     .glider-contain {
         width: 95%
     }
+
     .glider-prev {
         left: -25px
     }
+
     .glider-next,
     .glider-prev {
         font-size: 25px
     }
+
     .glider-next {
         right: -18px
     }
+
     .glider-slide {
         min-height: 180px
     }
+
     .multiple .glider-slide {
         min-height: 100px
     }
