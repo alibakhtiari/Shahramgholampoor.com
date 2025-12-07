@@ -22,7 +22,6 @@ h6 {
 }
 
 /* Base resets */
-.mobile-menu .menu,
 h1,
 h2,
 h6 {
@@ -173,132 +172,12 @@ h2 {
 
 /* .home .sadeh img moved to index.astro */
 
-.logo-mobile,
-.mobile-menu {
-    display: none;
-    text-align: center
-}
-
-.vertical-nav {
-    width: 31%
-}
-
-.logo-desk {
-    margin: 120px 0 24px 212px
-}
-
-li,
-ul {
-    list-style: none;
-    margin: 0;
-    padding: 0
-}
-
-.menu:after,
-.menu:before {
-    content: '';
-    display: table;
-    clear: both
-}
-
-.mobile-menu .menu {
-    font-size: 12px;
-    background-color: rgba(0, 0, 0, .4)
-}
-
-.abouts .logo-mobile,
-.abouts .mobile-menu .menu,
-.videos .logo-mobile,
-.videos .mobile-menu .menu {
-    background-color: rgba(255, 255, 255, .2);
-    border-radius: 2px
-}
-
-.videos {
-    overflow-y: hidden
-}
-
-.vert-menu .menu,
-.vert-menu .menu>li {
-    font-size: 13px;
-    text-transform: none
-}
-
-.vert-menu .menu a {
-    padding: 4px 0 3px
-}
-
-.vert-menu {
-    margin-left: 212px
-}
-
-.footer {
-    margin: 20px 20px 20px 212px;
-    position: fixed;
-    float: left;
-    bottom: 0
-}
-
-.footer p {
-    line-height: 0;
-    font-size: 10px
-}
-
-/* User snippet had line-height: 0 for h2 in footer group, but generally h2 line-height: 1 set above */
-
-.row {
-    padding: 0;
-    width: auto;
-    max-width: none
-}
-
-.row .container {
-    margin: 0;
-    padding: 0
-}
-
-input#form_email,
-input#form_name,
-textarea#form_message {
-    background: #000;
-    border-radius: 6px;
-    padding: 10px;
-    color: #fff;
-    width: 60%;
-    margin: 10px 0
-}
-
-.btn-send {
-    background: rgba(0, 0, 0, 0);
-    border: 2px solid #333;
-    padding: 10px 15px;
-    border-radius: 6px;
-    font-size: 15px
-}
-
-.btn-send:hover {
-    border: 2px solid #000;
-    cursor: pointer
-}
-
-::placeholder {
-    color: #ccc;
-    opacity: 1;
-    font-size: 12px
-}
-
-:-ms-input-placeholder {
-    color: #ccc
-}
-
-::-ms-input-placeholder {
-    color: #ccc
-}
-
 .contact .logo-mobile,
 .contact .mobile-menu a {
     color: #fff
 }
+
+/* Navbar & Footer styles moved to components */
 
 @media (max-width:992px) {
 
@@ -314,33 +193,7 @@ textarea#form_message {
         display: block
     }
 
-    .active a {
-        font-size: 12px;
-        font-weight: 400
-    }
-
-    #sadeh img,
-    div#mainwrap {
-        background-color: rgba(0, 0, 0, .4);
-        padding: 20px;
-        max-width: 100%;
-        margin: 0
-    }
-
-    ul#menu-menu-1 {
-        display: inline-flex
-    }
-
-    .logo-mobile {
-        background-color: rgba(0, 0, 0, .4);
-        margin: 20px auto;
-        max-width: 40%;
-        padding: 10px
-    }
-
-    .footer {
-        margin-left: 20px
-    }
+    /* Navbar styles moved */
 
     .al-sadeh,
     .album {
@@ -400,27 +253,13 @@ textarea#form_message {
 
     /* .about styles moved to about.astro */
 
-    .logo-mobile {
-        max-width: 60%
-    }
-
-    .logo-desk,
-    .vert-menu {
-        display: none
-    }
-
-    .logo-mobile,
-    .mobile-menu {
-        display: block
-    }
+    /* Navbar/Footer styles moved */
 
     .col {
         margin: 20px auto
     }
 
-    .footer {
-        margin-left: 20px
-    }
+    /* .footer moved */
 
     .spacer,
     .vertical-nav {
@@ -428,7 +267,7 @@ textarea#form_message {
     }
 
     .vertical-nav {
-        float: left
+        /* moved */
     }
 
     .al-sadeh,

@@ -55,3 +55,110 @@ const { activePage } = Astro.props;
     <h1><strong>Shahram</strong> Gholampoor</h1>
     <h2>Official Website</h2>
 </div>
+
+<style>
+    /* Navbar Styles Extracted from main.css */
+    .vertical-nav {
+        width: 31%;
+    }
+
+    .logo-desk {
+        margin: 120px 0 24px 212px;
+    }
+
+    .logo-mobile,
+    .mobile-menu {
+        display: none;
+        text-align: center;
+    }
+
+    .menu:after,
+    .menu:before {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    .mobile-menu .menu {
+        font-size: 12px;
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    /* Text Transform Reset for Mobile Menu items */
+    .mobile-menu .menu {
+        text-transform: none;
+    }
+
+    .vert-menu .menu,
+    .vert-menu .menu > li {
+        font-size: 13px;
+        text-transform: none;
+    }
+
+    .vert-menu .menu a {
+        padding: 4px 0 3px;
+    }
+
+    .vert-menu {
+        margin-left: 212px;
+    }
+
+    /* Active State */
+    .active a {
+        font-size: 12px;
+        font-weight: 700;
+    }
+
+    /* Media Queries for Navbar */
+    @media (max-width: 992px) {
+        .logo-desk,
+        .vert-menu {
+            display: none;
+        }
+
+        .logo-mobile,
+        .mobile-menu {
+            display: block;
+        }
+
+        .logo-mobile {
+            background-color: rgba(0, 0, 0, 0.4);
+            margin: 20px auto;
+            max-width: 40%;
+            padding: 10px;
+        }
+
+        .logo-desk,
+        .vert-menu .menu {
+            display: none;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .logo-mobile {
+            max-width: 60%;
+        }
+
+        .logo-desk,
+        .vert-menu {
+            display: none;
+        }
+
+        .logo-mobile,
+        .mobile-menu {
+            display: block;
+        }
+
+        .vertical-nav {
+            float: left;
+            width: 0 !important; /* Legacy override */
+        }
+    }
+
+    @media (min-width: 769px) {
+        .mobile-menu .menu {
+            display: inline-block;
+            vertical-align: top;
+        }
+    }
+</style>
