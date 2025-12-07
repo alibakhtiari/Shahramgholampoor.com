@@ -189,21 +189,19 @@ const schema = JSON.stringify(
 <style>
     .video-container {
         width: 100%;
-        max-width: 1200px; /* Increased max-width for side-by-side */
-        margin: 0 auto;
+        /* Match other pages float:right logic via margin-left auto or flex alignment */
+        flex: 1;
+        margin-top: 80px;
         padding: 20px;
         display: flex;
-        flex-direction: row; /* Default to row (side-by-side) */
-        flex-wrap: wrap; /* Allow wrapping */
+        flex-direction: column; /* Stack video and carousel */
         gap: 30px;
-        margin-top: 80px;
-        align-items: flex-start; /* Align top */
+        max-width: 1200px;
     }
 
     /* Main Player */
     .main-player-wrapper {
-        flex: 2 1 600px; /* Grow 2, Shrink 1, Basis 600px (triggers wrap if < 600 available alongside selector) */
-        min-width: 300px; /* Ensure it doesn't get too small */
+        width: 100%;
         background: #000;
         border-radius: 12px;
         overflow: hidden;
@@ -214,13 +212,12 @@ const schema = JSON.stringify(
 
     /* Selector Carousel */
     .video-selector {
-        flex: 1 1 350px; /* Grow 1, Shrink 1, Basis 350px */
+        width: 100%;
         background: rgba(0, 0, 0, 0.4);
         backdrop-filter: blur(10px);
         border-radius: 12px;
         padding: 15px;
         border: 1px solid rgba(255, 255, 255, 0.1);
-        min-width: 300px;
     }
 
     .carousel-container {
@@ -319,12 +316,13 @@ const schema = JSON.stringify(
         transform: scale(1.1);
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 992px) {
         .video-container {
-            padding: 10px;
             margin-top: 60px;
+            padding: 10px;
         }
-
+    }
+    @media (max-width: 768px) {
         .carousel-item {
             flex: 0 0 120px;
         }
