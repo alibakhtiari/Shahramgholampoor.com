@@ -110,19 +110,13 @@ import bg3 from "../assets/img/3.webp";
                     <div class="ease"></div>
                 </div>
             </form>
-            <div
-                id="error_message"
-                style="width:100%; height:100%; display:none; "
-            >
+            <div id="error_message">
                 <h4>Error</h4>
                 <span id="error_text"
                     >Sorry there was an error sending your form.</span
                 >
             </div>
-            <div
-                id="success_message"
-                style="width:100%; height:100%; display:none; "
-            >
+            <div id="success_message">
                 <h2>Success! Your Message was Sent Successfully.</h2>
             </div>
         </div>
@@ -320,6 +314,26 @@ import bg3 from "../assets/img/3.webp";
         .info p {
             text-align: center;
         }
+    }
+</style>
+
+<style>
+    /* Contact Page Specific Styles moved from main.css */
+    :global(body.contact),
+    :global(body.contact .footer h2),
+    :global(body.contact footer h2),
+    :global(body.contact footer p),
+    :global(body.contact p),
+    :global(body.contact a) {
+        color: #000 !important;
+    }
+
+    /* Message Styles */
+    #error_message,
+    #success_message {
+        width: 100%;
+        height: 100%;
+        display: none;
     }
 </style>
 ```

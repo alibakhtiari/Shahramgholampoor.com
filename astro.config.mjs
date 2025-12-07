@@ -8,7 +8,7 @@ import cloudflare from '@astrojs/cloudflare';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://shahramgholampoor.com',
-  output: 'server',
+  output: 'static',
   adapter: cloudflare(),
   integrations: [sitemap()]
 });

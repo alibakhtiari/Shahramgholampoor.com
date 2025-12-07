@@ -4,26 +4,9 @@ import Layout from "../layouts/Layout.astro";
 import sadehImg from "../assets/img/sadeh.webp";
 import MusicPlayer from "../components/MusicPlayer.astro";
 
-const tracks = [
-    { title: "The First Day", src: "/assets/music/sadeh/01 The First Day.mp3" },
-    {
-        title: "Under the Rain",
-        src: "/assets/music/sadeh/02 Under the Rain.mp3",
-    },
-    { title: "The Wait", src: "/assets/music/sadeh/03 The Wait.mp3" },
-    { title: "Not a Song", src: "/assets/music/sadeh/04 Not a Song.mp3" },
-    { title: "248", src: "/assets/music/sadeh/05 248.mp3" },
-    { title: "Without You", src: "/assets/music/sadeh/06 Without You.mp3" },
-    { title: "Sadeh", src: "/assets/music/sadeh/07 Sadeh.mp3" },
-    { title: "Maybe", src: "/assets/music/sadeh/08 Maybe.mp3" },
-    { title: "The Fifth Day", src: "/assets/music/sadeh/09 The fifth day.mp3" },
-    { title: "Rain Again", src: "/assets/music/sadeh/10 Rain Again.mp3" },
-    { title: "StarLess", src: "/assets/music/sadeh/11 StarLess.mp3" },
-    { title: "Departed", src: "/assets/music/sadeh/12 Departed.mp3" },
-    { title: "Farewell", src: "/assets/music/sadeh/13 Farewell.mp3" },
-    { title: "Yearning", src: "/assets/music/sadeh/14 Yearning.mp3" },
-    { title: "13:57:32", src: "/assets/music/sadeh/15 13 57 32.mp3" },
-];
+import { albums } from "../data/albums";
+
+const tracks = albums["sadeh"];
 
 const description =
     "Listen to 'Sadeh', a music album by Shahram Gholampoor featuring 15 original tracks.";

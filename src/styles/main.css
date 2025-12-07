@@ -100,44 +100,4 @@ a {
 }
 
 
-.media-control:hover {
-    background-color: rgba(255, 255, 255, .25)
-}
-
-.media-symbol {
-    display: block;
-    fill: #fff;
-    height: 1em;
-    width: 1em
-}
-
-.media-symbol[aria-hidden=true] {
-    display: none
-}
-
-.media-media[src$=".mp3"] {
-    max-height: 0
-}
-
-.videos .play-item {
-    display: inline-block
-}
-
-.videos .play-link.active {
-    transform: scale(1.2);
-    transition: all .3s
-}
-
-.thumb {
-    width: 100%
-}
-
-/* Contact Page Dark Text Override */
-body.contact,
-body.contact .footer h2,
-body.contact footer h2,
-body.contact footer p,
-body.contact p,
-body.contact a {
-    color: #000 !important;
-}
+/* CSS Cleanup */
