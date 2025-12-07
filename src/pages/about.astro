@@ -1,6 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { Image } from "astro:assets";
+
 import bgAbout from "../assets/img/about.webp";
 import bgAboutM from "../assets/img/about.m.webp";
 const description =
@@ -29,13 +29,13 @@ const schema = JSON.stringify({
     <script type="application/ld+json" set:html={schema} slot="head" />
     <div class="col about">
         <div class="img-container animated fadeIn">
-            <Image
-                src={bgAbout}
+            <img
+                src={bgAbout.src}
                 alt="Shahram Gholampoor"
                 class="profile-img desktop-img"
             />
-            <Image
-                src={bgAboutM}
+            <img
+                src={bgAboutM.src}
                 alt="Shahram Gholampoor"
                 class="profile-img mobile-img"
             />

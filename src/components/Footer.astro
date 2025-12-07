@@ -2,35 +2,44 @@
 const year = new Date().getFullYear();
 ---
 
-<footer id="foot" class="footer animated fadeIn">
+<footer class="animated fadeIn">
     <h2>&copy; <span id="year">{year}</span> Shahram Gholampoor</h2>
-    <p>Design by : Studio HEH | Hamed Jaberha</p>
-    <p>Developed at <a href="https://webabc.ir">WebABC</a></p>
+    <p>
+        Design by : Studio HEH | Hamed Jaberha<br />Developed at
+        <a href="https://webabc.ir">WebABC</a>
+    </p>
+
+    <style>
+        footer {
+            margin: 20px;
+            position: fixed;
+            float: left;
+            bottom: 0;
+            left: 200px;
+        }
+        footer h2 {
+            font-size: 11px;
+            margin: 5px 0;
+        }
+        footer p {
+            margin: 0;
+            font-size: 10px;
+        }
+        footer p a {
+            display: inline-block;
+            padding: 5px 0;
+        }
+
+        @media (max-width: 992px) {
+            footer {
+                left: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            footer {
+                left: 20px;
+            }
+        }
+    </style>
 </footer>
-
-<style>
-    /* Footer Styles Extracted from main.css */
-    .footer {
-        margin: 20px 20px 20px 212px;
-        position: fixed;
-        float: left;
-        bottom: 0;
-    }
-
-    .footer p {
-        line-height: 0;
-        font-size: 10px;
-    }
-
-    @media (max-width: 992px) {
-        .footer {
-            margin-left: 20px;
-        }
-    }
-
-    @media (max-width: 768px) {
-        .footer {
-            margin-left: 20px;
-        }
-    }
-</style>

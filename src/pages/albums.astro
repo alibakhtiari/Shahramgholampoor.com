@@ -1,6 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { Image } from "astro:assets";
+
 import sadehBlack from "../assets/img/sadeh-black.webp";
 import al40Black from "../assets/img/40-black.webp";
 import bg2 from "../assets/img/2.webp";
@@ -8,38 +8,38 @@ import bg2 from "../assets/img/2.webp";
 
 <Layout
     title="Albums – Shahram Gholampoor"
-    bodyClass="albums full-width"
+    bodyClass="full-width"
     activePage="albums"
 >
     <!-- Background Image -->
-    <Image
-        src={bg2}
+    <img
+        src={bg2.src}
         alt="Background"
         class="fixed-bg"
         loading="eager"
         fetchpriority="high"
     />
-
-    <div class="col spacer"></div>
-    <div class="col center sadeh animated fadeIn delay-1s slow">
-        <a href="/sadeh" target="_self">
-            <Image
-                class="album"
-                src={sadehBlack}
-                alt="Sadeh Album"
-                loading="eager"
-            />
-        </a>
-    </div>
-    <div class="col center al40 animated fadeIn delay-1s slow">
-        <a href="/40" target="_self">
-            <Image
-                class="album"
-                src={al40Black}
-                alt="40 Album"
-                loading="eager"
-            />
-        </a>
+    <div class="albums">
+        <div class="center sadeh animated">
+            <a href="/sadeh" target="_self">
+                <img
+                    class="album"
+                    src={sadehBlack.src}
+                    alt="Sadeh Album"
+                    loading="eager"
+                />
+            </a>
+        </div>
+        <div class="center al40 animated">
+            <a href="/40" target="_self">
+                <img
+                    class="album"
+                    src={al40Black.src}
+                    alt="40 Album"
+                    loading="eager"
+                />
+            </a>
+        </div>
     </div>
 </Layout>
 
@@ -55,45 +55,24 @@ import bg2 from "../assets/img/2.webp";
         object-fit: cover;
         object-position: center;
     }
-    .spacer {
-        width: 9%;
-    }
-    .sadeh {
-        width: 30%;
-        text-align: center;
-    }
-    .al40 {
-        width: 30%; /* Assumed from context, legacy al40 was 30% */
-        /* wait main.css said .al40 { width: 30% } but also .albums .sadeh { width: 30% } */
-        /* Legacy .albums .sadeh { width: 30% } */
-    }
-    .album {
-        padding: 20px;
-        background-color: rgba(0, 0, 0, 0.2);
-        max-width: 100%;
-        margin: 90px 0 0 60px;
+    .albums {
+        display: flex;
+        justify-content: end;
+        padding-top: 140px;
+        gap: 50px;
+        padding-right: 100px;
     }
 
-    @media (max-width: 992px) {
-        .spacer {
-            max-width: none;
-            width: 0 !important;
-            flex: 0 1 auto;
-        }
-        .sadeh,
-        .al40 {
-            width: 50%;
-        }
-        .album {
-            margin-top: 20px;
+    @media (max-width: 1024px) {
+        .albums {
+            padding: 140px 0 0;
         }
     }
     @media (max-width: 768px) {
-        .album {
-            margin: 0;
-        }
-        .spacer {
-            width: 0 !important;
+        .albums {
+            padding: 10px 0 0;
+            flex-direction: column;
+            gap: 0;
         }
     }
 </style>

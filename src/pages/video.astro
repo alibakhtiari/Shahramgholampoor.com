@@ -1,6 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { Image } from "astro:assets";
+
 import { videos } from "../data/videos";
 import "plyr/dist/plyr.css";
 
@@ -68,8 +68,8 @@ const schema = JSON.stringify(
                                 data-poster={video.poster.src}
                             >
                                 <div class="thumb-wrapper">
-                                    <Image
-                                        src={video.thumb}
+                                    <img
+                                        src={video.thumb.src}
                                         alt={`Video ${video.title}`}
                                     />
                                     <div class="play-overlay">

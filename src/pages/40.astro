@@ -1,8 +1,34 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { Image } from "astro:assets";
+
 import al40Img from "../assets/img/40.webp";
-import "plyr/dist/plyr.css";
+import MusicPlayer from "../components/MusicPlayer.astro";
+
+const tracks = [
+    { title: "The Birth", src: "/assets/music/40/01 The Birth.mp3" },
+    { title: "Infantile", src: "/assets/music/40/02 Infantile.mp3" },
+    {
+        title: "Melancholy Morning",
+        src: "/assets/music/40/03 Melancholy Morning.mp3",
+    },
+    { title: "The Next", src: "/assets/music/40/04 The Next.mp3" },
+    { title: "Flight", src: "/assets/music/40/05 Flight.mp3" },
+    { title: "Desertion", src: "/assets/music/40/06 Desertion.mp3" },
+    { title: "Forsaken", src: "/assets/music/40/07 Forsaken.mp3" },
+    { title: "The Boy", src: "/assets/music/40/08 The Boy.mp3" },
+    { title: "Little Sorrows", src: "/assets/music/40/09 Little Sorrows.mp3" },
+    {
+        title: "My Sister's Dolls",
+        src: "/assets/music/40/10 My Sister's Dolls.mp3",
+    },
+    { title: "Grief", src: "/assets/music/40/11 Grief.mp3" },
+    {
+        title: "Infantine (Piano Version)",
+        src: "/assets/music/40/12 Infantine (Piano Version).mp3",
+    },
+    { title: "Remorse", src: "/assets/music/40/13 Remorse.mp3" },
+    { title: "Salvation", src: "/assets/music/40/14 Salvation.mp3" },
+];
 
 const description =
     "Listen to '40', a music album by Shahram Gholampoor featuring 14 original tracks.";
@@ -16,27 +42,12 @@ const schema = JSON.stringify({
         name: "Shahram Gholampoor",
     },
     image: new URL("/assets/img/40.webp", Astro.site),
-    numTracks: 14,
-    track: [
-        { "@type": "MusicRecording", name: "The Birth", position: 1 },
-        { "@type": "MusicRecording", name: "Infantile", position: 2 },
-        { "@type": "MusicRecording", name: "Melancholy Morning", position: 3 },
-        { "@type": "MusicRecording", name: "The Next", position: 4 },
-        { "@type": "MusicRecording", name: "Flight", position: 5 },
-        { "@type": "MusicRecording", name: "Desertion", position: 6 },
-        { "@type": "MusicRecording", name: "Forsaken", position: 7 },
-        { "@type": "MusicRecording", name: "The Boy", position: 8 },
-        { "@type": "MusicRecording", name: "Little Sorrows", position: 9 },
-        { "@type": "MusicRecording", name: "My Sister's Dolls", position: 10 },
-        { "@type": "MusicRecording", name: "Grief", position: 11 },
-        {
-            "@type": "MusicRecording",
-            name: "Infantine (Piano Version)",
-            position: 12,
-        },
-        { "@type": "MusicRecording", name: "Remorse", position: 13 },
-        { "@type": "MusicRecording", name: "Salvation", position: 14 },
-    ],
+    numTracks: tracks.length,
+    track: tracks.map((t, i) => ({
+        "@type": "MusicRecording",
+        name: t.title,
+        position: i + 1,
+    })),
 });
 
 import bg4 from "../assets/img/4.webp";
@@ -44,13 +55,13 @@ import bg4 from "../assets/img/4.webp";
 
 <Layout
     title="40 – Shahram Gholampoor"
-    bodyClass="m-player forty full-width"
+    bodyClass="forty full-width"
     activePage="albums"
     description={description}
 >
     <!-- Background Image -->
-    <Image
-        src={bg4}
+    <img
+        src={bg4.src}
         alt="Background"
         class="fixed-bg"
         loading="eager"
@@ -58,220 +69,18 @@ import bg4 from "../assets/img/4.webp";
     />
 
     <script type="application/ld+json" set:html={schema} slot="head" />
-    <div class="col al-sadeh">
-        <div class="animated fadeIn">
-            <div id="mainwrap">
-                <div class="albums-art">
-                    <Image src={al40Img} alt="40 Album Art" />
-                </div>
-
-                <audio id="player" controls>
-                    <source
-                        src="/assets/music/40/01 The Birth.mp3"
-                        type="audio/mp3"
-                    />
-                </audio>
-
-                <ul class="play-list" id="list">
-                    <li class="play-item">
-                        <a
-                            class="play-link active"
-                            href="#"
-                            data-src="/assets/music/40/01 The Birth.mp3"
-                            >01. The Birth</a
-                        >
-                    </li>
-                    <li class="play-item">
-                        <a
-                            class="play-link"
-                            href="#"
-                            data-src="/assets/music/40/02 Infantile.mp3"
-                            >02. Infantile</a
-                        >
-                    </li>
-                    <li class="play-item">
-                        <a
-                            class="play-link"
-                            href="#"
-                            data-src="/assets/music/40/03 Melancholy Morning.mp3"
-                            >03. Melancholy Morning</a
-                        >
-                    </li>
-                    <li class="play-item">
-                        <a
-                            class="play-link"
-                            href="#"
-                            data-src="/assets/music/40/04 The Next.mp3"
-                            >04. The Next</a
-                        >
-                    </li>
-                    <li class="play-item">
-                        <a
-                            class="play-link"
-                            href="#"
-                            data-src="/assets/music/40/05 Flight.mp3"
-                            >05. Flight</a
-                        >
-                    </li>
-                    <li class="play-item">
-                        <a
-                            class="play-link"
-                            href="#"
-                            data-src="/assets/music/40/06 Desertion.mp3"
-                            >06. Desertion</a
-                        >
-                    </li>
-                    <li class="play-item">
-                        <a
-                            class="play-link"
-                            href="#"
-                            data-src="/assets/music/40/07 Forsaken.mp3"
-                            >07. Forsaken</a
-                        >
-                    </li>
-                    <li class="play-item">
-                        <a
-                            class="play-link"
-                            href="#"
-                            data-src="/assets/music/40/08 The Boy.mp3"
-                            >08. The Boy</a
-                        >
-                    </li>
-                    <li class="play-item">
-                        <a
-                            class="play-link"
-                            href="#"
-                            data-src="/assets/music/40/09 Little Sorrows.mp3"
-                            >09. Little Sorrows</a
-                        >
-                    </li>
-                    <li class="play-item">
-                        <a
-                            class="play-link"
-                            href="#"
-                            data-src="/assets/music/40/10 My Sister's Dolls.mp3"
-                            >10. My Sister's Dolls</a
-                        >
-                    </li>
-                    <li class="play-item">
-                        <a
-                            class="play-link"
-                            href="#"
-                            data-src="/assets/music/40/11 Grief.mp3"
-                            >11. Grief</a
-                        >
-                    </li>
-                    <li class="play-item">
-                        <a
-                            class="play-link"
-                            href="#"
-                            data-src="/assets/music/40/12 Infantine (Piano Version).mp3"
-                            >12. Infantine (Piano Version)</a
-                        >
-                    </li>
-                    <li class="play-item">
-                        <a
-                            class="play-link"
-                            href="#"
-                            data-src="/assets/music/40/13 Remorse.mp3"
-                            >13. Remorse</a
-                        >
-                    </li>
-                    <li class="play-item">
-                        <a
-                            class="play-link"
-                            href="#"
-                            data-src="/assets/music/40/14 Salvation.mp3"
-                            >14. Salvation</a
-                        >
-                    </li>
-                </ul>
-                <div class="apple center">
-                    <a
-                        href="https://itunes.apple.com/us/album/40/1228537087"
-                        target="_blank"></a>
-                </div>
-            </div>
-        </div>
+    <div class="col animated fadeIn">
+        <MusicPlayer
+            id="40"
+            albumTitle="40"
+            coverImage={al40Img}
+            tracks={tracks}
+            appleMusicLink="https://itunes.apple.com/us/album/40/1228537087"
+        />
     </div>
 </Layout>
 
-<script>
-    document.addEventListener("astro:page-load", async () => {
-        const playerElement = document.getElementById("player");
-        if (!playerElement) return;
-
-        const { default: Plyr } = await import("plyr");
-
-        const player = new Plyr("#player", {
-            controls: ["play", "progress", "current-time", "mute", "volume"],
-            invertTime: false,
-            toggleInvert: false,
-        });
-
-        const tracks = document.querySelectorAll(".play-link");
-
-        tracks.forEach((track) => {
-            track.addEventListener("click", (e) => {
-                e.preventDefault();
-                const target = e.currentTarget as HTMLAnchorElement;
-                const src = target.getAttribute("data-src");
-
-                if (src) {
-                    player.source = {
-                        type: "audio",
-                        sources: [
-                            {
-                                src: src,
-                                type: "audio/mp3",
-                            },
-                        ],
-                    };
-                    player.play();
-
-                    // Update active class
-                    document
-                        .querySelector(".play-link.active")
-                        ?.classList.remove("active");
-                    target.classList.add("active");
-                }
-            });
-        });
-
-        // Auto-play next track
-        player.on("ended", () => {
-            const activeTrack = document.querySelector(".play-link.active");
-            if (activeTrack) {
-                const parentLi = activeTrack.closest("li");
-                const nextLi = parentLi?.nextElementSibling;
-                if (nextLi) {
-                    const nextLink = nextLi.querySelector(
-                        ".play-link",
-                    ) as HTMLAnchorElement;
-                    nextLink?.click();
-                } else {
-                    const firstLink = document.querySelector(
-                        ".play-list li:first-child .play-link",
-                    ) as HTMLAnchorElement;
-                    firstLink?.click();
-                }
-            }
-        });
-    });
-</script>
-
 <style>
-    .play-list {
-        margin-top: 20px;
-    }
-    .play-link {
-        cursor: pointer;
-    }
-    .play-link.active {
-        font-weight: bold;
-        color: #ddd;
-    }
-
     /* Inlined from main.css .m-player, .al-sadeh etc */
     .fixed-bg {
         position: fixed;
@@ -282,28 +91,5 @@ import bg4 from "../assets/img/4.webp";
         z-index: -1;
         object-fit: cover;
         object-position: center;
-    }
-    .al-sadeh {
-        width: 33%; /* Uses .al-sadeh class */
-        margin-top: 120px;
-        float: right;
-    }
-    .albums-art img {
-        width: 100%;
-        height: auto;
-    }
-
-    @media (max-width: 992px) {
-        .al-sadeh {
-            margin-top: 20px;
-            width: 50%;
-        }
-    }
-    @media (max-width: 768px) {
-        .al-sadeh {
-            width: 100%;
-            margin: 0;
-            float: none;
-        }
     }
 </style>

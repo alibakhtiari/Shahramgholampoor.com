@@ -10,12 +10,10 @@ const menuItems = [
 ];
 ---
 
-<div class="col vertical-nav">
-    <div class="logo-container animated fadeIn">
-        <div class="logo">
-            <h1><strong>Shahram</strong> Gholampoor</h1>
-            <h2>Official Website</h2>
-        </div>
+<div class="vertical-nav">
+    <div class="logo animated fadeIn">
+        <h1><strong>Shahram</strong> Gholampoor</h1>
+        <h2>Official Website</h2>
     </div>
     <div class="menu-container">
         <ul id="primary-menu" class="menu fadeIn animated">
@@ -36,10 +34,6 @@ const menuItems = [
 </div>
 
 <style>
-    /* 
-       Unified Navbar Styles 
-    */
-
     li,
     ul {
         list-style: none;
@@ -47,14 +41,14 @@ const menuItems = [
         padding: 0;
     }
 
-    /* --- Base / Desktop Styles --- */
     .vertical-nav {
-        width: 31%;
+        position: fixed;
+        left: 220px;
+        top: 140px;
     }
 
-    /* Logo Styles */
-    .logo-container {
-        margin: 120px 0 24px 212px;
+    .logo {
+        margin-bottom: 24px;
     }
 
     .logo h1,
@@ -63,30 +57,13 @@ const menuItems = [
         font-weight: 400;
         line-height: 1;
         margin: 0;
-    }
-
-    .logo h1 {
-        margin: 20px 0 10px;
-        font-size: 16px;
         letter-spacing: 0;
+        font-size: 16px;
     }
 
     .logo h2 {
         margin: 10px 0;
         font-size: 15px;
-        letter-spacing: 0;
-    }
-
-    /* Menu Styles */
-    .menu-container {
-        margin-left: 212px;
-    }
-
-    .menu:after,
-    .menu:before {
-        content: "";
-        display: table;
-        clear: both;
     }
 
     .menu-item {
@@ -105,22 +82,7 @@ const menuItems = [
         font-weight: 700;
     }
 
-    /* --- Page Specific Overrides (About & Video) --- */
-    /* Using :global to target body class */
-    :global(body.abouts) .logo,
-    :global(body.abouts) .menu,
-    :global(body.videos) .logo,
-    :global(body.videos) .menu {
-        /* Mobile override typically, but checks if desktop needs it too? 
-           Legacy: .abouts .logo-mobile, .abouts .mobile-menu .menu ... 
-           Desktop didn't have bg color.
-        */
-    }
-
-    /* --- Media Queries --- */
-
     @media (max-width: 992px) {
-        /* Layout Structure */
         .vertical-nav {
             width: 100% !important;
             float: none;
@@ -128,31 +90,25 @@ const menuItems = [
             flex-direction: column;
         }
 
-        /* Order: Menu First (1), Logo Second (2) */
         .menu-container {
             order: 1;
-            margin: 0; /* Reset desktop margin */
+            margin: 0;
             text-align: center;
         }
 
-        .logo-container {
+        .logo {
             order: 2;
-            margin: 20px auto; /* Reset desktop margin */
+            margin: 10px auto;
             text-align: center;
             max-width: 40%;
             padding: 10px;
-        }
-
-        /* Styling for Mobile look */
-        .logo {
             background-color: rgba(0, 0, 0, 0.4);
             border-radius: 2px;
-            padding: 10px; /* Logo container internal padding? */
         }
-        /* Actually legacy .logo-mobile had padding:10px and bg color. 
-           Here .logo-container has the margin/width. .logo can have the bg.
-        */
-
+        .logo h2 {
+            margin-top: 5px;
+            margin-bottom: 0;
+        }
         .menu {
             display: inline-flex;
             justify-content: center;
@@ -163,14 +119,13 @@ const menuItems = [
 
         .menu-item {
             font-size: 12px;
-            text-transform: none; /* Reset if previously set */
+            text-transform: none;
         }
 
         .menu-item a {
             padding: 10px;
         }
 
-        /* Page Overrides for Mobile Transparency */
         :global(body.abouts) .logo,
         :global(body.abouts) .menu,
         :global(body.videos) .logo,
@@ -181,12 +136,22 @@ const menuItems = [
     }
 
     @media (max-width: 768px) {
-        .logo-container {
+        .logo {
             max-width: 60%;
         }
 
+        :global(body.contact) .menu-item a,
+        :global(body.contact) .logo h1,
+        :global(body.contact) .logo h2 {
+            color: #000;
+        }
+
         .vertical-nav {
-            width: 100% !important; /* Ensure full width */
+            width: 100% !important;
+            left: 0;
+            right: 0;
+            top: 20px;
+            position: relative;
         }
     }
 </style>

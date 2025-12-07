@@ -1,32 +1,30 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { Image } from "astro:assets";
+
 import sadehHome from "../assets/img/sadeh-home.webp";
 import bg1 from "../assets/img/1.webp";
 import bg1m from "../assets/img/1.m.webp";
 ---
 
 <Layout title="Shahram Gholampoor – Official Website" activePage="home">
-    <!-- Background Image -->
-    <Image
-        src={bg1}
+    <img
+        src={bg1.src}
         alt="Background"
         class="fixed-bg desktop-bg"
         loading="eager"
         fetchpriority="high"
     />
-    <Image
-        src={bg1m}
+    <img
+        src={bg1m.src}
         alt="Background"
         class="fixed-bg mobile-bg"
         loading="eager"
         fetchpriority="high"
     />
-
     <div class="col spacer"></div>
     <div id="sadeh" class="col sadeh animated fadeIn delay-1s slow">
         <a href="/sadeh" target="_self">
-            <Image src={sadehHome} alt="Shahram Gholampoor - Sadeh" />
+            <img src={sadehHome.src} alt="Shahram Gholampoor - Sadeh" />
         </a>
     </div>
 </Layout>
@@ -53,17 +51,13 @@ import bg1m from "../assets/img/1.m.webp";
             display: block;
         }
     }
-
-    /* Inlined from main.css .home & .sadeh */
-    .spacer {
-        width: 33%;
-    }
     .sadeh {
-        width: 36%;
+        position: absolute;
+        right: 130px;
+        top: 140px;
     }
     .sadeh img {
         max-width: 100%;
-        margin: 90px 243px 0 0;
         text-align: center;
     }
 
@@ -73,6 +67,7 @@ import bg1m from "../assets/img/1.m.webp";
             width: 100% !important;
             flex: 0 1 auto;
             text-align: center;
+            right: 0;
         }
         .spacer {
             max-width: none;

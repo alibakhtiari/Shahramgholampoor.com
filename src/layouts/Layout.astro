@@ -91,13 +91,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         </script>
         <ViewTransitions />
     </head>
-    <body class={bodyClass}>
-        <div class="row container">
-            <div class="full-height row-content-wrap">
-                <Navbar activePage={activePage} />
-                <slot />
-                <Footer />
-            </div>
-        </div>
+    <body class={`${bodyClass}`}>
+        <Navbar activePage={activePage} />
+        <slot />
+        <Footer />
     </body>
 </html>

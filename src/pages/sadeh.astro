@@ -1,8 +1,29 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { Image } from "astro:assets";
+
 import sadehImg from "../assets/img/sadeh.webp";
-import "plyr/dist/plyr.css";
+import MusicPlayer from "../components/MusicPlayer.astro";
+
+const tracks = [
+    { title: "The First Day", src: "/assets/music/sadeh/01 The First Day.mp3" },
+    {
+        title: "Under the Rain",
+        src: "/assets/music/sadeh/02 Under the Rain.mp3",
+    },
+    { title: "The Wait", src: "/assets/music/sadeh/03 The Wait.mp3" },
+    { title: "Not a Song", src: "/assets/music/sadeh/04 Not a Song.mp3" },
+    { title: "248", src: "/assets/music/sadeh/05 248.mp3" },
+    { title: "Without You", src: "/assets/music/sadeh/06 Without You.mp3" },
+    { title: "Sadeh", src: "/assets/music/sadeh/07 Sadeh.mp3" },
+    { title: "Maybe", src: "/assets/music/sadeh/08 Maybe.mp3" },
+    { title: "The Fifth Day", src: "/assets/music/sadeh/09 The fifth day.mp3" },
+    { title: "Rain Again", src: "/assets/music/sadeh/10 Rain Again.mp3" },
+    { title: "StarLess", src: "/assets/music/sadeh/11 StarLess.mp3" },
+    { title: "Departed", src: "/assets/music/sadeh/12 Departed.mp3" },
+    { title: "Farewell", src: "/assets/music/sadeh/13 Farewell.mp3" },
+    { title: "Yearning", src: "/assets/music/sadeh/14 Yearning.mp3" },
+    { title: "13:57:32", src: "/assets/music/sadeh/15 13 57 32.mp3" },
+];
 
 const description =
     "Listen to 'Sadeh', a music album by Shahram Gholampoor featuring 15 original tracks.";
@@ -16,24 +37,12 @@ const schema = JSON.stringify({
         name: "Shahram Gholampoor",
     },
     image: new URL("/assets/img/sadeh.webp", Astro.site),
-    numTracks: 15,
-    track: [
-        { "@type": "MusicRecording", name: "The First Day", position: 1 },
-        { "@type": "MusicRecording", name: "Under the Rain", position: 2 },
-        { "@type": "MusicRecording", name: "The Wait", position: 3 },
-        { "@type": "MusicRecording", name: "Not a Song", position: 4 },
-        { "@type": "MusicRecording", name: "248", position: 5 },
-        { "@type": "MusicRecording", name: "Without You", position: 6 },
-        { "@type": "MusicRecording", name: "Sadeh", position: 7 },
-        { "@type": "MusicRecording", name: "Maybe", position: 8 },
-        { "@type": "MusicRecording", name: "The Fifth Day", position: 9 },
-        { "@type": "MusicRecording", name: "Rain Again", position: 10 },
-        { "@type": "MusicRecording", name: "StarLess", position: 11 },
-        { "@type": "MusicRecording", name: "Departed", position: 12 },
-        { "@type": "MusicRecording", name: "Farewell", position: 13 },
-        { "@type": "MusicRecording", name: "Yearning", position: 14 },
-        { "@type": "MusicRecording", name: "13:57:32", position: 15 },
-    ],
+    numTracks: tracks.length,
+    track: tracks.map((t, i) => ({
+        "@type": "MusicRecording",
+        name: t.title,
+        position: i + 1,
+    })),
 });
 
 import bg5 from "../assets/img/5.webp";
@@ -41,13 +50,13 @@ import bg5 from "../assets/img/5.webp";
 
 <Layout
     title="Sadeh – Shahram Gholampoor"
-    bodyClass="m-player sadeh full-width"
+    bodyClass="sadeh full-width"
     activePage="albums"
     description={description}
 >
     <!-- Background Image -->
-    <Image
-        src={bg5}
+    <img
+        src={bg5.src}
         alt="Background"
         class="fixed-bg"
         loading="eager"
@@ -55,230 +64,18 @@ import bg5 from "../assets/img/5.webp";
     />
 
     <script type="application/ld+json" set:html={schema} slot="head" />
-    <div class="col al-sadeh">
-        <div class="animated fadeIn">
-            <div id="mainwrap">
-                <div class="albums-art">
-                    <Image src={sadehImg} alt="Sadeh Album Art" />
-                </div>
-
-                <audio id="player" controls>
-                    <source
-                        src="/assets/music/sadeh/01 The First Day.mp3"
-                        type="audio/mp3"
-                    />
-                </audio>
-
-                <ul class="play-list" id="list">
-                    <li class="play-item">
-                        <a
-                            class="play-link active"
-                            href="#"
-                            data-src="/assets/music/sadeh/01 The First Day.mp3"
-                            >01. The First Day</a
-                        >
-                    </li>
-                    <li class="play-item">
-                        <a
-                            class="play-link"
-                            href="#"
-                            data-src="/assets/music/sadeh/02 Under the Rain.mp3"
-                            >02. Under the Rain</a
-                        >
-                    </li>
-                    <li class="play-item">
-                        <a
-                            class="play-link"
-                            href="#"
-                            data-src="/assets/music/sadeh/03 The Wait.mp3"
-                            >03. The Wait</a
-                        >
-                    </li>
-                    <li class="play-item">
-                        <a
-                            class="play-link"
-                            href="#"
-                            data-src="/assets/music/sadeh/04 Not a Song.mp3"
-                            >04. Not a Song</a
-                        >
-                    </li>
-                    <li class="play-item">
-                        <a
-                            class="play-link"
-                            href="#"
-                            data-src="/assets/music/sadeh/05 248.mp3">05. 248</a
-                        >
-                    </li>
-                    <li class="play-item">
-                        <a
-                            class="play-link"
-                            href="#"
-                            data-src="/assets/music/sadeh/06 Without You.mp3"
-                            >06. Without You</a
-                        >
-                    </li>
-                    <li class="play-item">
-                        <a
-                            class="play-link"
-                            href="#"
-                            data-src="/assets/music/sadeh/07 Sadeh.mp3"
-                            >07. Sadeh</a
-                        >
-                    </li>
-                    <li class="play-item">
-                        <a
-                            class="play-link"
-                            href="#"
-                            data-src="/assets/music/sadeh/08 Maybe.mp3"
-                            >08. Maybe</a
-                        >
-                    </li>
-                    <li class="play-item">
-                        <a
-                            class="play-link"
-                            href="#"
-                            data-src="/assets/music/sadeh/09 The fifth day.mp3"
-                            >09. The Fifth Day</a
-                        >
-                    </li>
-                    <li class="play-item">
-                        <a
-                            class="play-link"
-                            href="#"
-                            data-src="/assets/music/sadeh/10 Rain Again.mp3"
-                            >10. Rain Again</a
-                        >
-                    </li>
-                    <li class="play-item">
-                        <a
-                            class="play-link"
-                            href="#"
-                            data-src="/assets/music/sadeh/11 StarLess.mp3"
-                            >11. StarLess</a
-                        >
-                    </li>
-                    <li class="play-item">
-                        <a
-                            class="play-link"
-                            href="#"
-                            data-src="/assets/music/sadeh/12 Departed.mp3"
-                            >12. Departed</a
-                        >
-                    </li>
-                    <li class="play-item">
-                        <a
-                            class="play-link"
-                            href="#"
-                            data-src="/assets/music/sadeh/13 Farewell.mp3"
-                            >13. Farewell</a
-                        >
-                    </li>
-                    <li class="play-item">
-                        <a
-                            class="play-link"
-                            href="#"
-                            data-src="/assets/music/sadeh/14 Yearning.mp3"
-                            >14. Yearning</a
-                        >
-                    </li>
-                    <li class="play-item">
-                        <a
-                            class="play-link"
-                            href="#"
-                            data-src="/assets/music/sadeh/15 13 57 32.mp3"
-                            >15. 13:57:32</a
-                        >
-                    </li>
-                </ul>
-                <div class="apple center">
-                    <a
-                        href="https://itunes.apple.com/us/album/sadeh/1228553841"
-                        target="_blank"></a>
-                </div>
-            </div>
-        </div>
+    <div class="col dark animated fadeIn">
+        <MusicPlayer
+            id="sadeh"
+            albumTitle="Sadeh"
+            coverImage={sadehImg}
+            tracks={tracks}
+            appleMusicLink="https://itunes.apple.com/us/album/sadeh/1228553841"
+        />
     </div>
 </Layout>
 
-<script>
-    document.addEventListener("astro:page-load", async () => {
-        const playerElement = document.getElementById("player");
-        if (!playerElement) return;
-
-        const { default: Plyr } = await import("plyr");
-
-        const player = new Plyr("#player", {
-            controls: ["play", "progress", "current-time", "mute", "volume"],
-            invertTime: false,
-            toggleInvert: false,
-        });
-
-        const tracks = document.querySelectorAll(".play-link");
-
-        tracks.forEach((track) => {
-            track.addEventListener("click", (e) => {
-                e.preventDefault();
-                const target = e.currentTarget as HTMLAnchorElement;
-                const src = target.getAttribute("data-src");
-
-                if (src) {
-                    player.source = {
-                        type: "audio",
-                        sources: [
-                            {
-                                src: src,
-                                type: "audio/mp3",
-                            },
-                        ],
-                    };
-                    player.play();
-
-                    // Update active class
-                    document
-                        .querySelector(".play-link.active")
-                        ?.classList.remove("active");
-                    target.classList.add("active");
-                }
-            });
-        });
-
-        // Auto-play next track
-        player.on("ended", () => {
-            const activeTrack = document.querySelector(".play-link.active");
-            if (activeTrack) {
-                const parentLi = activeTrack.closest("li");
-                const nextLi = parentLi?.nextElementSibling;
-                if (nextLi) {
-                    const nextLink = nextLi.querySelector(
-                        ".play-link",
-                    ) as HTMLAnchorElement;
-                    nextLink?.click();
-                } else {
-                    const firstLink = document.querySelector(
-                        ".play-list li:first-child .play-link",
-                    ) as HTMLAnchorElement;
-                    firstLink?.click();
-                }
-            }
-        });
-    });
-</script>
-
 <style>
-    /* Add any custom styles here if needed, or rely on global.css */
-    /* Ensure playlist looks good */
-    .play-list {
-        margin-top: 20px;
-    }
-    .play-link {
-        cursor: pointer;
-    }
-    .play-link.active {
-        font-weight: bold;
-        color: #ddd; /* Example highlight */
-    }
-
-    /* Inlined from main.css .m-player, .al-sadeh etc */
     .fixed-bg {
         position: fixed;
         top: 0;
@@ -288,44 +85,13 @@ import bg5 from "../assets/img/5.webp";
         z-index: -1;
         object-fit: cover;
         object-position: center;
-        /* m-player had background-attachment: scroll? 
-           If fixed-bg is fixed, it doesn't scroll. 
-           If legacy m-player had scroll, maybe it means image scrolled with content?
-           "background-attachment: scroll" means background moves with element.
-           If body is scrolling, background scrolls.
-           If I use position:fixed, it's like background-attachment: fixed.
-           Legacy .home etc had fixed. .m-player had scroll.
-           So for sadeh/40, background should SCROLL?
-           If so, position: absolute and full height of content? Or just z-index -1 on body?
-           But usually big bg images are fixed. 
-           Let's stick to fixed for consistency unless user complains, or make it absolute.
-           If "scroll", it means it scrolls AWAY when you scroll down.
-           Given the page has a playlist, it might be taller than screen.
-           If I make it fixed, it stays. That's usually better for music player bg.
-           I'll keep it fixed (like home) for better LCP/CLS.
-        */
-    }
-    .al-sadeh {
-        width: 33%;
-        margin-top: 120px;
-        float: right;
-    }
-    .albums-art img {
-        width: 100%;
-        height: auto;
-    }
-
-    @media (max-width: 992px) {
-        .al-sadeh {
-            margin-top: 20px;
-            width: 50%;
-        }
     }
     @media (max-width: 768px) {
-        .al-sadeh {
-            width: 100%;
-            margin: 0;
-            float: none;
+        .dark a.play-link {
+            color: #000;
+        }
+        .dark a.play-link.active {
+            color: #000;
         }
     }
 </style>

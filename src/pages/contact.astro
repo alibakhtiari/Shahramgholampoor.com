@@ -18,7 +18,6 @@ const schema = JSON.stringify({
 });
 
 import bg3 from "../assets/img/3.webp";
-import { Image } from "astro:assets";
 ---
 
 <Layout
@@ -27,9 +26,8 @@ import { Image } from "astro:assets";
     bodyClass="contact full-width"
     activePage="contact"
 >
-    <!-- Background Image -->
-    <Image
-        src={bg3}
+    <img
+        src={bg3.src}
         alt="Background"
         class="fixed-bg"
         loading="eager"
@@ -37,34 +35,30 @@ import { Image } from "astro:assets";
     />
 
     <script type="application/ld+json" set:html={schema} slot="head" />
-    <div class="row container">
-        <div class="full-height row-content-wrap">
-            <!-- Sidebar/Mobile Menu handled by Layout/Components -->
-
-            <div class="col spacer"></div>
-
-            <div class="col info animated fadeIn delay-1s slow">
-                <p><strong>Shahram Gholampoor</strong></p>
-                <p>Composer, pianist and violinist based in Tehran, Iran</p>
-                <p><strong>Contact Info</strong></p>
-                <p>Email: info@shahramgholampoor.com</p>
-                <div class="s-icon animated fadeIn delay-1s slow">
-                    <div class="instagram"></div>
-                    <div class="linkedin"></div>
-                    <div class="soundcloud"></div>
-                    <div class="spotify"></div>
-                    <div class="facebook"></div>
-                </div>
+    <div class="contact">
+        <div class="col info animated fadeIn delay-1s slow">
+            <p><strong>Shahram Gholampoor</strong></p>
+            <p>Composer, pianist and violinist based in Tehran, Iran</p>
+            <p><strong>Contact Info</strong></p>
+            <p>Email: info@shahramgholampoor.com</p>
+            <div class="s-icon animated fadeIn delay-1s slow">
+                <div class="instagram"></div>
+                <div class="linkedin"></div>
+                <div class="soundcloud"></div>
+                <div class="spotify"></div>
+                <div class="facebook"></div>
             </div>
+        </div>
 
-            <div class="col c-form animated fadeIn delay-1s slow">
-                <form
-                    class="montform"
-                    id="contact-form"
-                    enctype="multipart/form-data"
-                >
-                    <div class="form-group">
-                        <label class="name">Name :</label><br />
+        <div class="col c-form animated fadeIn delay-1s slow">
+            <form
+                class="montform"
+                id="contact-form"
+                enctype="multipart/form-data"
+            >
+                <div class="form-group">
+                    <label class="name"
+                        >Name :
                         <input
                             name="name"
                             type="text"
@@ -73,9 +67,11 @@ import { Image } from "astro:assets";
                             placeholder="Please enter your name"
                             id="name"
                         />
-                    </div>
-                    <div class="form-group">
-                        <label class="email">Email :</label><br />
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label class="email"
+                        >Email :
                         <input
                             name="email"
                             type="email"
@@ -84,46 +80,50 @@ import { Image } from "astro:assets";
                             id="email"
                             placeholder="Please enter your email"
                         />
-                    </div>
-                    <div class="form-group">
-                        <label class="file">Attachment :</label><br />
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label class="file"
+                        >Attachment :
                         <input
                             name="image"
                             type="file"
                             id="file"
                             accept="audio/*,video/*"
-                        />
-                    </div>
-                    <div class="form-group">
-                        <label class="text">Message :</label><br />
+                        /></label
+                    >
+                </div>
+                <div class="form-group">
+                    <label class="text"
+                        >Message :
                         <textarea
                             name="message"
                             id="comment"
                             rows="3"
                             class="form-control"
                             placeholder="Please enter your Message here"
-                        ></textarea>
-                    </div>
-                    <div class="submit">
-                        <button type="submit" class="btn-send">Submit</button>
-                        <div class="ease"></div>
-                    </div>
-                </form>
-                <div
-                    id="error_message"
-                    style="width:100%; height:100%; display:none; "
-                >
-                    <h4>Error</h4>
-                    <span id="error_text"
-                        >Sorry there was an error sending your form.</span
+                        ></textarea></label
                     >
                 </div>
-                <div
-                    id="success_message"
-                    style="width:100%; height:100%; display:none; "
-                >
-                    <h2>Success! Your Message was Sent Successfully.</h2>
+                <div class="submit">
+                    <button type="submit" class="btn-send">Submit</button>
+                    <div class="ease"></div>
                 </div>
+            </form>
+            <div
+                id="error_message"
+                style="width:100%; height:100%; display:none; "
+            >
+                <h4>Error</h4>
+                <span id="error_text"
+                    >Sorry there was an error sending your form.</span
+                >
+            </div>
+            <div
+                id="success_message"
+                style="width:100%; height:100%; display:none; "
+            >
+                <h2>Success! Your Message was Sent Successfully.</h2>
             </div>
         </div>
     </div>
@@ -138,62 +138,14 @@ import { Image } from "astro:assets";
 </script>
 
 <style>
-    .instagram,
-    .linkedin,
-    .soundcloud,
-    .spotify {
-        width: 16px;
-        height: 16px;
+    /* Base Styles */
+    .contact {
+        display: flex;
+        justify-content: flex-end;
+        gap: 50px;
+        padding: 140px 50px 0;
     }
 
-    .facebook,
-    .instagram,
-    .linkedin,
-    .soundcloud,
-    .spotify {
-        display: inline-block;
-        background: url(../assets/img/png.webp) no-repeat;
-        overflow: hidden;
-        margin: 10px;
-    }
-
-    .s-icon {
-        text-align: left;
-    }
-
-    @media (max-width: 992px) {
-        .s-icon {
-            text-align: center;
-        }
-
-        .c-form {
-            margin-bottom: 100px;
-        }
-    }
-
-    .instagram {
-        background-position: -1px 0;
-    }
-
-    .linkedin {
-        background-position: -1px -17px;
-    }
-
-    .soundcloud {
-        background-position: -1px -34px;
-    }
-
-    .spotify {
-        background-position: -1px -51px;
-    }
-
-    .facebook {
-        background-position: -1px -68px;
-        width: 14px;
-        height: 14px;
-    }
-
-    /* Inlined from main.css .contact */
     .fixed-bg {
         position: fixed;
         top: 0;
@@ -204,42 +156,170 @@ import { Image } from "astro:assets";
         object-fit: cover;
         object-position: center;
     }
-    .spacer {
-        width: 8%;
+
+    /* Form Styles */
+    .form-group {
+        position: relative;
+        margin-bottom: 15px;
     }
-    .info {
-        margin-top: 120px;
-        float: right; /* .info is .col */
-    }
-    .c-form {
-        width: 30%;
-        margin-top: 120px;
-        float: right;
+    .montform {
+        width: 80%;
+        margin: 0 auto;
     }
 
+    #contact-form label {
+        font-family: inherit;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-weight: 600;
+        margin-bottom: 8px;
+        display: block;
+        color: rgba(0, 0, 0, 0.7);
+    }
+
+    .form-control {
+        width: 100%;
+        background: transparent;
+        border: none;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+        border-radius: 0;
+        padding: 10px 0;
+        font-family: inherit;
+        font-size: 14px;
+        color: #000;
+        transition: all 0.3s ease;
+        outline: none;
+        box-shadow: none;
+        -webkit-appearance: none;
+    }
+
+    .form-control:focus {
+        border-bottom-color: #000;
+    }
+
+    .form-control::placeholder {
+        color: rgba(0, 0, 0, 0.3);
+        font-size: 13px;
+        font-weight: 300;
+    }
+
+    textarea.form-control {
+        resize: vertical;
+        min-height: 40px;
+    }
+
+    /* File Input */
+    input[type="file"] {
+        font-size: 12px;
+        padding: 10px 0;
+        color: rgba(0, 0, 0, 0.6);
+    }
+
+    /* Submit Button */
+    .btn-send {
+        background: #000;
+        color: #fff;
+        border: none;
+        padding: 15px 40px;
+        font-family: inherit;
+        text-transform: uppercase;
+        font-size: 11px;
+        letter-spacing: 2px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-top: 10px;
+        display: inline-block;
+    }
+
+    .btn-send:hover {
+        background: #333;
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .help-block.with-errors {
+        margin-top: 5px;
+        font-size: 11px;
+        color: #d9534f;
+    }
+
+    .messages {
+        color: #28a745;
+        font-size: 14px;
+        margin-top: 20px;
+        font-weight: 500;
+    }
+
+    .error-message {
+        color: #d9534f;
+    }
+
+    /* Social Icons */
+    .s-icon {
+        text-align: left;
+    }
+
+    .s-icon a,
+    .facebook,
+    .instagram,
+    .linkedin,
+    .soundcloud,
+    .spotify {
+        display: inline-block;
+    }
+
+    .facebook,
+    .instagram,
+    .linkedin,
+    .soundcloud,
+    .spotify {
+        background: url(../assets/img/png.webp) no-repeat;
+        overflow: hidden;
+        margin: 10px;
+        width: 16px;
+        height: 16px;
+    }
+
+    .instagram {
+        background-position: -1px 0;
+    }
+    .linkedin {
+        background-position: -1px -17px;
+    }
+    .soundcloud {
+        background-position: -1px -34px;
+    }
+    .spotify {
+        background-position: -1px -51px;
+    }
+    .facebook {
+        background-position: -1px -68px;
+        width: 14px;
+        height: 14px;
+    }
+
+    /* Responsive Styles */
     @media (max-width: 992px) {
-        .spacer {
-            max-width: none;
-            width: 0 !important;
-            flex: 0 1 auto;
+        .s-icon {
+            text-align: center;
+        }
+        .c-form {
+            margin-bottom: 100px;
         }
     }
+
     @media (max-width: 768px) {
-        .spacer {
-            width: 0 !important;
+        .contact {
+            justify-content: center;
+            gap: 0px;
+            padding: 20px 0 0;
+            flex-direction: column;
         }
         .info p {
             text-align: center;
         }
-        input#form_email,
-        input#form_name,
-        textarea#form_message {
-            width: 94%;
-            padding: 3%;
-        }
-        #contact-form {
-            width: 90%;
-            margin: 0 auto;
-        }
     }
 </style>
+```

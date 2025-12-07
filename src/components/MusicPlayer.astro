@@ -1,0 +1,242 @@
+---
+import "plyr/dist/plyr.css";
+import appleMusic from "../assets/img/apple.webp";
+
+interface Props {
+    albumTitle: string;
+    coverImage: ImageMetadata;
+    tracks: {
+        title: string;
+        src: string;
+    }[];
+    appleMusicLink?: string;
+    id: string; // Unique ID for multiple players on site if needed
+}
+
+const { albumTitle, coverImage, tracks, appleMusicLink, id } = Astro.props;
+---
+
+<div class="music-player-component" id={`music-player-${id}`}>
+    <div class="albums-art">
+        <img src={coverImage.src} alt={`${albumTitle} Album Art`} />
+    </div>
+
+    <audio id={`player-${id}`} controls class="plyr-audio">
+        <source src={tracks[0].src} type="audio/mp3" />
+    </audio>
+
+    <div class="playlist-container">
+        <ul class="play-list" id={`list-${id}`}>
+            {
+                tracks.map((track, index) => (
+                    <li class="play-item">
+                        <a
+                            class={`play-link ${index === 0 ? "active" : ""}`}
+                            href="#"
+                            data-src={track.src}
+                        >
+                            {String(index + 1).padStart(2, "0")}. {track.title}
+                        </a>
+                    </li>
+                ))
+            }
+        </ul>
+    </div>
+
+    {
+        appleMusicLink && (
+            <a
+                href={appleMusicLink}
+                target="_blank"
+                class="apple center"
+                aria-label="Listen on Apple Music"
+            >
+                <img src={appleMusic.src} alt="Apple Music" />
+            </a>
+        )
+    }
+</div>
+
+<script define:vars={{ id }}>
+    document.addEventListener("astro:page-load", async () => {
+        const playerId = `player-${id}`;
+        const playerElement = document.getElementById(playerId);
+        if (!playerElement) return;
+
+        const { default: Plyr } = await import("plyr");
+
+        const player = new Plyr(`#${playerId}`, {
+            controls: ["play", "progress", "current-time", "mute", "volume"],
+            invertTime: false,
+            toggleInvert: false,
+        });
+
+        const container = document.getElementById(`music-player-${id}`);
+        if (!container) return;
+
+        const tracks = container.querySelectorAll(".play-link");
+
+        tracks.forEach((track) => {
+            track.addEventListener("click", (e) => {
+                e.preventDefault();
+                const target = e.currentTarget;
+                const src = target.getAttribute("data-src");
+
+                if (src) {
+                    player.source = {
+                        type: "audio",
+                        sources: [
+                            {
+                                src: src,
+                                type: "audio/mp3",
+                            },
+                        ],
+                    };
+                    player.play();
+
+                    // Update active class
+                    container
+                        .querySelector(".play-link.active")
+                        ?.classList.remove("active");
+                    target.classList.add("active");
+                }
+            });
+        });
+
+        // Auto-play next track
+        player.on("ended", () => {
+            const activeTrack = container.querySelector(".play-link.active");
+            if (activeTrack) {
+                const parentLi = activeTrack.closest("li");
+                const nextLi = parentLi?.nextElementSibling;
+                if (nextLi) {
+                    const nextLink = nextLi.querySelector(".play-link");
+                    nextLink?.click();
+                } else {
+                    const firstLink = container.querySelector(
+                        ".play-list li:first-child .play-link",
+                    );
+                    firstLink?.click();
+                }
+            }
+        });
+    });
+</script>
+
+<style>
+    .music-player-component {
+        border: 1px solid;
+        padding: 20px;
+        max-width: 350px;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 50px;
+    }
+    .albums-art {
+        padding: 10px;
+    }
+    .albums-art img {
+        width: auto;
+        margin: 0 auto;
+        height: 200px;
+        display: block;
+    }
+
+    .playlist-container {
+        margin-top: 10px;
+        max-height: 250px;
+        overflow-y: auto;
+        padding-right: 5px;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+    }
+
+    .playlist-container::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    .playlist-container::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    .playlist-container::-webkit-scrollbar-thumb {
+        background-color: rgba(255, 255, 255, 0.3);
+        border-radius: 3px;
+    }
+
+    .play-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .play-item {
+        margin: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .play-item:last-child {
+        border-bottom: none;
+    }
+
+    .play-link {
+        display: block;
+        padding: 10px 5px;
+        cursor: pointer;
+        color: #fff;
+        text-decoration: none;
+        transition: background-color 0.2s;
+        font-size: 13px;
+    }
+
+    .play-link:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .play-link.active {
+        font-weight: bold;
+        color: #fff;
+        background-color: rgba(255, 255, 255, 0.15);
+    }
+
+    .apple {
+        background: rgba(255, 255, 255, 0.1);
+        margin-top: 10px;
+        padding-top: 20px;
+        border-radius: 12px;
+    }
+
+    .apple a {
+        width: 140px;
+        height: 30px;
+    }
+
+    .apple:hover {
+        background: rgba(255, 255, 255, 0.2);
+        cursor: pointer;
+    }
+    @media (max-width: 768px) {
+        .music-player-component {
+            max-width: 300px;
+            margin: 0 auto;
+            position: inherit;
+            transform: none;
+        }
+        .albums-art {
+            padding: 5px;
+        }
+        .albums-art img {
+            height: 140px;
+        }
+        :global(.dark) .play-link {
+            color: #000;
+        }
+        :global(.dark) .play-link.active {
+            color: #000;
+        }
+        .playlist-container {
+            max-height: 200px;
+        }
+    }
+</style>
