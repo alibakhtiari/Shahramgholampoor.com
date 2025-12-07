@@ -50,19 +50,30 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         <meta name="twitter:image:alt" content="Shahram Gholampoor">
 
         <script type="application/ld+json">
-        {
-          "@context": "https://schema.org",
-          "@type": "MusicGroup",
-          "name": "Shahram Gholampoor",
-          "url": "https://shahramgholampoor.com",
-          "image": "https://shahramgholampoor.com/assets/img/40.png",
-          "description": "Composer, pianist and violinist based in Tehran, Iran",
-          "sameAs": [
-            "https://instagram.com/your_instagram",
-            "https://soundcloud.com/your_soundcloud"
-          ]
-        }
-        </script>
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Shahram Gholampoor",
+  "url": "https://shahramgholampoor.com",
+  "image": "https://shahramgholampoor.com/assets/img/40.png",
+  "description": "Composer, pianist and violinist based in Tehran, Iran.",
+  "jobTitle": [
+    "Composer",
+    "Pianist",
+    "Violinist"
+  ],
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Shahram Gholampoor Music"
+  },
+  "sameAs": [
+    "https://music.apple.com/us/artist/shahram-gholampoor/1228537334",
+    "https://soundcloud.com/shahramgholampour",
+    "https://www.youtube.com/channel/UCQm5X5un3bbd-aobfZqpxGg",
+    "https://open.spotify.com/artist/YOUR_SPOTIFY_ID" 
+  ]
+}
+</script>
 		<ViewTransitions />
 	</head>
 	<body class={bodyClass}>
