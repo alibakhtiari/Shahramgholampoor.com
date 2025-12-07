@@ -1,8 +1,7 @@
 ---
 import { ViewTransitions } from "astro:transitions";
 import "../styles/main.css";
-import Sidebar from "../components/Sidebar.astro";
-import MobileMenu from "../components/MobileMenu.astro";
+import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
 
 interface Props {
@@ -95,8 +94,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <body class={bodyClass}>
         <div class="row container">
             <div class="full-height row-content-wrap">
-                <MobileMenu activePage={activePage} />
-                <Sidebar activePage={activePage} />
+                <Navbar activePage={activePage} />
                 <slot />
                 <Footer />
             </div>
