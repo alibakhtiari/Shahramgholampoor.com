@@ -21,7 +21,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 <html lang="en-US">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width,initial-scale=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -31,7 +31,6 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 		<title>{title}</title>
         <meta name="description" content={description} />
         <link rel="canonical" href={canonicalURL} />
-        <meta name="keywords" content="Composer,Pianist,Violinist">
         <meta name="theme-color" content="#ffffff">
 
         <!-- Open Graph -->
@@ -50,6 +49,20 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         <meta name="twitter:image" content={new URL(image, Astro.url)} />
         <meta name="twitter:image:alt" content="Shahram Gholampoor">
 
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "MusicGroup",
+          "name": "Shahram Gholampoor",
+          "url": "https://shahramgholampoor.com",
+          "image": "https://shahramgholampoor.com/assets/img/40.png",
+          "description": "Composer, pianist and violinist based in Tehran, Iran",
+          "sameAs": [
+            "https://instagram.com/your_instagram",
+            "https://soundcloud.com/your_soundcloud"
+          ]
+        }
+        </script>
 		<ViewTransitions />
 	</head>
 	<body class={bodyClass}>
