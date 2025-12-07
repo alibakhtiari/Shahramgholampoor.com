@@ -1,26 +1,4 @@
-/* Imported styles */
-@import './style.min.css';
-
-/* Override background images with correct paths */
-.home {
-  background-image: url(../assets/img/1.jpg) !important;
-}
-
-.albums {
-  background-image: url(../assets/img/2.jpg) !important;
-}
-
-.contact {
-  background-image: url(../assets/img/3.jpg) !important;
-}
-
-.m-player.sadeh {
-  background-image: url(../assets/img/5.jpg) !important;
-}
-
-.m-player.forty {
-  background-image: url(../assets/img/4.jpg) !important;
-}
+/* Global styles from index.html */
 
 
 /* Global styles from index.html */

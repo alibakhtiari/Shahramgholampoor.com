@@ -16,6 +16,8 @@ const schema = JSON.stringify({
         url: Astro.site,
     },
 });
+
+import bg3 from "../assets/img/3.jpg";
 ---
 
 <Layout
@@ -23,6 +25,7 @@ const schema = JSON.stringify({
     description={description}
     bodyClass="contact full-width"
     activePage="contact"
+    backgroundUrl={bg3.src}
 >
     <script type="application/ld+json" set:html={schema} slot="head" />
     <div class="row container">

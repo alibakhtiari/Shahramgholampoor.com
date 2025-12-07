@@ -1,11 +1,17 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import { Image } from 'astro:assets';
-import sadehBlack from '../assets/img/sadeh-black.png';
-import al40Black from '../assets/img/40-black.png';
+import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import sadehBlack from "../assets/img/sadeh-black.png";
+import al40Black from "../assets/img/40-black.png";
+import bg2 from "../assets/img/2.jpg";
 ---
 
-<Layout title="Albums – Shahram Gholampoor" bodyClass="albums full-width" activePage="albums">
+<Layout
+    title="Albums – Shahram Gholampoor"
+    bodyClass="albums full-width"
+    activePage="albums"
+    backgroundUrl={bg2.src}
+>
     <div class="col spacer"></div>
     <div class="col center sadeh animated fadeIn delay-1s slow">
         <a href="/sadeh" target="_self">

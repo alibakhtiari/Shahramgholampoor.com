@@ -1,93 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
-
-// Import images
-import vid2022Poster from "../assets/vid/2022.jpg";
-import vid2022Thumb from "../assets/vid/2022.t.jpg";
-import vid2018_6Poster from "../assets/vid/2018.6.jpg";
-import vid2018_6Thumb from "../assets/vid/2018.6t.jpg";
-import vid2018_5Poster from "../assets/vid/2018.5.jpg";
-import vid2018_5Thumb from "../assets/vid/2018.5t.jpg";
-import vid2018_4Poster from "../assets/vid/2018.4.jpg";
-import vid2018_4Thumb from "../assets/vid/2018.4t.jpg";
-import vid2018_3Poster from "../assets/vid/2018.3.jpg";
-import vid2018_3Thumb from "../assets/vid/2018.3t.jpg";
-import vid2018_2Poster from "../assets/vid/2018.2.jpg";
-import vid2018_2Thumb from "../assets/vid/2018.2t.jpg";
-import vid2017Poster from "../assets/vid/2017.jpg";
-import vid2017Thumb from "../assets/vid/2017t.jpg";
-import vid2008Poster from "../assets/vid/2008.jpg";
-import vid2008Thumb from "../assets/vid/2008t.jpg";
-import vid1998Poster from "../assets/vid/1998.jpg";
-import vid1998Thumb from "../assets/vid/1998t.jpg";
-
-// Video Data
-const videos = [
-    {
-        id: "2022",
-        title: "2022",
-        src: "https://raw.githubusercontent.com/alibakhtiari/Shahramgholampoor.com/main/assets/vid/2022.mp4",
-        thumb: vid2022Thumb,
-        poster: vid2022Poster,
-    },
-    {
-        id: "2018.6",
-        title: "2018.6",
-        src: "https://raw.githubusercontent.com/alibakhtiari/Shahramgholampoor.com/main/assets/vid/2018.6.mp4",
-        thumb: vid2018_6Thumb,
-        poster: vid2018_6Poster,
-    },
-    {
-        id: "2018.5",
-        title: "2018.5",
-        src: "https://raw.githubusercontent.com/alibakhtiari/Shahramgholampoor.com/main/assets/vid/2018.5.mp4",
-        thumb: vid2018_5Thumb,
-        poster: vid2018_5Poster,
-    },
-    {
-        id: "2018.4",
-        title: "2018.4",
-        src: "https://raw.githubusercontent.com/alibakhtiari/Shahramgholampoor.com/main/assets/vid/2018.4.mp4",
-        thumb: vid2018_4Thumb,
-        poster: vid2018_4Poster,
-    },
-    {
-        id: "2018.3",
-        title: "2018.3",
-        src: "https://raw.githubusercontent.com/alibakhtiari/Shahramgholampoor.com/main/assets/vid/2018.3.mp4",
-        thumb: vid2018_3Thumb,
-        poster: vid2018_3Poster,
-    },
-    {
-        id: "2018.2",
-        title: "2018.2",
-        src: "https://raw.githubusercontent.com/alibakhtiari/Shahramgholampoor.com/main/assets/vid/2018.2.mp4",
-        thumb: vid2018_2Thumb,
-        poster: vid2018_2Poster,
-    },
-    {
-        id: "2017",
-        title: "2017",
-        src: "/assets/vid/2017.mp4",
-        thumb: vid2017Thumb,
-        poster: vid2017Poster,
-    },
-    {
-        id: "2008",
-        title: "2008",
-        src: "/assets/vid/2008.mp4",
-        thumb: vid2008Thumb,
-        poster: vid2008Poster,
-    },
-    {
-        id: "1998",
-        title: "1998",
-        src: "/assets/vid/1998.mp4",
-        thumb: vid1998Thumb,
-        poster: vid1998Poster,
-    },
-];
+import { videos } from "../data/videos";
+import "plyr/dist/plyr.css";
 
 const initialVideo = videos[0];
 
@@ -122,10 +37,12 @@ const schema = JSON.stringify(
             <video
                 id="main-video"
                 controls
+                crossorigin
+                playsinline
                 poster={initialVideo.poster.src}
-                src={initialVideo.src}
                 class="main-video"
             >
+                <source src={initialVideo.src} type="video/mp4" />
                 Your browser does not support the video tag.
             </video>
         </div>
@@ -188,16 +105,36 @@ const schema = JSON.stringify(
 </Layout>
 
 <script>
+    import Plyr from "plyr";
+
     document.addEventListener("astro:page-load", () => {
-        const mainVideo = document.getElementById(
-            "main-video",
-        ) as HTMLVideoElement;
+        const videoElement = document.getElementById("main-video");
+        if (!videoElement) return;
+
+        const player = new Plyr("#main-video", {
+            controls: [
+                "play-large",
+                "play",
+                "progress",
+                "current-time",
+                "mute",
+                "volume",
+                "captions",
+                "settings",
+                "pip",
+                "airplay",
+                "fullscreen",
+            ],
+            invertTime: false,
+            toggleInvert: false,
+        });
+
         const track = document.getElementById("video-track");
         const items = document.querySelectorAll(".carousel-item");
         const prevBtn = document.querySelector(".nav-btn.prev");
         const nextBtn = document.querySelector(".nav-btn.next");
 
-        if (!mainVideo || !track) return;
+        if (!track) return;
 
         // Handle Video Selection
         items.forEach((item) => {
@@ -205,17 +142,28 @@ const schema = JSON.stringify(
                 const src = item.getAttribute("data-src");
                 const poster = item.getAttribute("data-poster");
 
-                if (src && src !== mainVideo.src) {
+                if (src) {
                     // Update Active State
                     items.forEach((i) => i.classList.remove("active"));
                     item.classList.add("active");
 
-                    // Update Video
-                    mainVideo.src = src;
-                    mainVideo.poster = poster || "";
-                    mainVideo.play();
+                    // Update Player Source
+                    player.source = {
+                        type: "video",
+                        title: "Video",
+                        sources: [
+                            {
+                                src: src,
+                                type: "video/mp4",
+                            },
+                        ],
+                        poster: poster || "",
+                    };
 
-                    // Scroll into view if needed
+                    // Small timeout to ensure source is loaded before playing
+                    setTimeout(() => player.play(), 200);
+
+                    // Scroll into view
                     item.scrollIntoView({
                         behavior: "smooth",
                         block: "nearest",
@@ -226,7 +174,7 @@ const schema = JSON.stringify(
         });
 
         // Handle Carousel Navigation
-        const scrollAmount = 200; // Adjust based on item width
+        const scrollAmount = 200;
 
         prevBtn?.addEventListener("click", () => {
             track.scrollBy({ left: -scrollAmount, behavior: "smooth" });
@@ -247,25 +195,20 @@ const schema = JSON.stringify(
         display: flex;
         flex-direction: column;
         gap: 30px;
-        /* Center vertically in the layout if needed, or margin-top handled by global css */
         margin-top: 80px;
     }
 
     /* Main Player */
     .main-player-wrapper {
         width: 100%;
-        aspect-ratio: 16/9;
+        max-width: 100%;
         background: #000;
         border-radius: 12px;
         overflow: hidden;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .main-video {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
+        /* Plyr overrides */
+        --plyr-color-main: #fff;
     }
 
     /* Selector Carousel */
@@ -290,16 +233,16 @@ const schema = JSON.stringify(
         overflow-x: auto;
         scroll-behavior: smooth;
         padding: 5px;
-        scrollbar-width: none; /* Firefox */
-        -ms-overflow-style: none; /* IE/Edge */
+        scrollbar-width: none;
+        -ms-overflow-style: none;
     }
 
     .carousel-track::-webkit-scrollbar {
-        display: none; /* Chrome/Safari */
+        display: none;
     }
 
     .carousel-item {
-        flex: 0 0 160px; /* Fixed width thumbnails */
+        flex: 0 0 160px;
         aspect-ratio: 16/9;
         cursor: pointer;
         border-radius: 8px;
@@ -374,7 +317,6 @@ const schema = JSON.stringify(
         transform: scale(1.1);
     }
 
-    /* Responsive */
     @media (max-width: 768px) {
         .video-container {
             padding: 10px;
