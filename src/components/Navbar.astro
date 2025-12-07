@@ -1,75 +1,85 @@
 ---
 const { activePage } = Astro.props;
+
+const menuItems = [
+    { label: "Home", href: "/", id: "home" },
+    { label: "Albums", href: "/albums", id: "albums" },
+    { label: "Video", href: "/video", id: "video" },
+    { label: "About", href: "/about", id: "about" },
+    { label: "Contact", href: "/contact", id: "contact" },
+];
 ---
 
-<!-- Desktop Sidebar -->
 <div class="col vertical-nav">
-    <div class="logo-desk animated fadeIn">
-        <h1><strong>Shahram</strong> Gholampoor</h1>
-        <h2>Official Website</h2>
+    <div class="logo-container animated fadeIn">
+        <div class="logo">
+            <h1><strong>Shahram</strong> Gholampoor</h1>
+            <h2>Official Website</h2>
+        </div>
     </div>
-    <div class="vert-menu">
-        <ul id="animated" class="menu fadeIn animated">
-            <li class:list={["menu-item", { active: activePage === "home" }]}>
-                <a href="/">Home</a>
-            </li>
-            <li class:list={["menu-item", { active: activePage === "albums" }]}>
-                <a href="/albums">Albums</a>
-            </li>
-            <li class:list={["menu-item", { active: activePage === "video" }]}>
-                <a href="/video">Video</a>
-            </li>
-            <li class:list={["menu-item", { active: activePage === "about" }]}>
-                <a href="/about">About</a>
-            </li>
-            <li
-                class:list={["menu-item", { active: activePage === "contact" }]}
-            >
-                <a href="/contact">Contact</a>
-            </li>
+    <div class="menu-container">
+        <ul id="primary-menu" class="menu fadeIn animated">
+            {
+                menuItems.map((item) => (
+                    <li
+                        class:list={[
+                            "menu-item",
+                            { active: activePage === item.id },
+                        ]}
+                    >
+                        <a href={item.href}>{item.label}</a>
+                    </li>
+                ))
+            }
         </ul>
     </div>
 </div>
 
-<!-- Mobile Menu -->
-<div class="mobile-menu">
-    <ul id="menu-menu-1" class="menu fadeIn animated">
-        <li class:list={[{ active: activePage === "home" }]}>
-            <a href="/">Home</a>
-        </li>
-        <li class:list={[{ active: activePage === "albums" }]}>
-            <a href="/albums">Albums</a>
-        </li>
-        <li class:list={[{ active: activePage === "video" }]}>
-            <a href="/video">Videos</a>
-        </li>
-        <li class:list={[{ active: activePage === "about" }]}>
-            <a href="/about">About</a>
-        </li>
-        <li class:list={[{ active: activePage === "contact" }]}>
-            <a href="/contact">Contact</a>
-        </li>
-    </ul>
-</div>
-<div class="logo-mobile animated fadeIn">
-    <h1><strong>Shahram</strong> Gholampoor</h1>
-    <h2>Official Website</h2>
-</div>
-
 <style>
-    /* Navbar Styles Extracted from main.css */
+    /* 
+       Unified Navbar Styles 
+    */
+
+    li,
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* --- Base / Desktop Styles --- */
     .vertical-nav {
         width: 31%;
     }
 
-    .logo-desk {
+    /* Logo Styles */
+    .logo-container {
         margin: 120px 0 24px 212px;
     }
 
-    .logo-mobile,
-    .mobile-menu {
-        display: none;
-        text-align: center;
+    .logo h1,
+    .logo h2 {
+        text-transform: none;
+        font-weight: 400;
+        line-height: 1;
+        margin: 0;
+    }
+
+    .logo h1 {
+        margin: 20px 0 10px;
+        font-size: 16px;
+        letter-spacing: 0;
+    }
+
+    .logo h2 {
+        margin: 10px 0;
+        font-size: 15px;
+        letter-spacing: 0;
+    }
+
+    /* Menu Styles */
+    .menu-container {
+        margin-left: 212px;
     }
 
     .menu:after,
@@ -79,86 +89,104 @@ const { activePage } = Astro.props;
         clear: both;
     }
 
-    .mobile-menu .menu {
-        font-size: 12px;
-        background-color: rgba(0, 0, 0, 0.4);
-    }
-
-    /* Text Transform Reset for Mobile Menu items */
-    .mobile-menu .menu {
-        text-transform: none;
-    }
-
-    .vert-menu .menu,
-    .vert-menu .menu > li {
+    .menu-item {
         font-size: 13px;
-        text-transform: none;
     }
 
-    .vert-menu .menu a {
+    .menu-item a {
         padding: 4px 0 3px;
+        display: block;
+        color: #fff;
+        text-decoration: none;
     }
 
-    .vert-menu {
-        margin-left: 212px;
-    }
-
-    /* Active State */
-    .active a {
+    .menu-item.active a {
         font-size: 12px;
         font-weight: 700;
     }
 
-    /* Media Queries for Navbar */
+    /* --- Page Specific Overrides (About & Video) --- */
+    /* Using :global to target body class */
+    :global(body.abouts) .logo,
+    :global(body.abouts) .menu,
+    :global(body.videos) .logo,
+    :global(body.videos) .menu {
+        /* Mobile override typically, but checks if desktop needs it too? 
+           Legacy: .abouts .logo-mobile, .abouts .mobile-menu .menu ... 
+           Desktop didn't have bg color.
+        */
+    }
+
+    /* --- Media Queries --- */
+
     @media (max-width: 992px) {
-        .logo-desk,
-        .vert-menu {
-            display: none;
+        /* Layout Structure */
+        .vertical-nav {
+            width: 100% !important;
+            float: none;
+            display: flex;
+            flex-direction: column;
         }
 
-        .logo-mobile,
-        .mobile-menu {
-            display: block;
+        /* Order: Menu First (1), Logo Second (2) */
+        .menu-container {
+            order: 1;
+            margin: 0; /* Reset desktop margin */
+            text-align: center;
         }
 
-        .logo-mobile {
-            background-color: rgba(0, 0, 0, 0.4);
-            margin: 20px auto;
+        .logo-container {
+            order: 2;
+            margin: 20px auto; /* Reset desktop margin */
+            text-align: center;
             max-width: 40%;
             padding: 10px;
         }
 
-        .logo-desk,
-        .vert-menu .menu {
-            display: none;
+        /* Styling for Mobile look */
+        .logo {
+            background-color: rgba(0, 0, 0, 0.4);
+            border-radius: 2px;
+            padding: 10px; /* Logo container internal padding? */
+        }
+        /* Actually legacy .logo-mobile had padding:10px and bg color. 
+           Here .logo-container has the margin/width. .logo can have the bg.
+        */
+
+        .menu {
+            display: inline-flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            background-color: rgba(0, 0, 0, 0.4);
+            font-size: 12px;
+        }
+
+        .menu-item {
+            font-size: 12px;
+            text-transform: none; /* Reset if previously set */
+        }
+
+        .menu-item a {
+            padding: 10px;
+        }
+
+        /* Page Overrides for Mobile Transparency */
+        :global(body.abouts) .logo,
+        :global(body.abouts) .menu,
+        :global(body.videos) .logo,
+        :global(body.videos) .menu {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 2px;
         }
     }
 
     @media (max-width: 768px) {
-        .logo-mobile {
+        .logo-container {
             max-width: 60%;
         }
 
-        .logo-desk,
-        .vert-menu {
-            display: none;
-        }
-
-        .logo-mobile,
-        .mobile-menu {
-            display: block;
-        }
-
         .vertical-nav {
-            float: left;
-            width: 0 !important; /* Legacy override */
-        }
-    }
-
-    @media (min-width: 769px) {
-        .mobile-menu .menu {
-            display: inline-block;
-            vertical-align: top;
+            width: 100% !important; /* Ensure full width */
         }
     }
 </style>

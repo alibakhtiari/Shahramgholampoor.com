@@ -138,17 +138,10 @@ h2 {
     float: right
 }
 
-/* .albums .sadeh moved to albums.astro */
-
-/* .al-sadeh width moved */
-
-/* .contact .spacer moved to contact.astro */
-
 .al40 {
     width: 30%
 }
 
-/* .about moved to about.astro */
 
 .video {
     float: right;
@@ -156,32 +149,18 @@ h2 {
     margin-top: -20px
 }
 
-/* .about .img and .text moved to about.astro */
-
-/* .album style moved to albums.astro/sadeh.astro/40.astro (shared component style? maybe inline in each or keep shared?) - User asked to inline. */
-/* I inlined it in albums.astro, but it might be used in sadeh/40 too? .album class is used in albums.astro only? */
-/* In sadeh.html .album is margin-top:20px in media query. */
-/* Let's keep .album here if it's shared? No, plan was inline. */
-/* I inlined it in albums.astro. Is it used elsewhere? */
-/* In legacy: .album { margin: 90px 0 0 60px ... } */
-/* Let's remove it if I copied it. */
-
 .row-content-wrap {
     margin: 0
 }
 
-/* .home .sadeh img moved to index.astro */
 
 .contact .logo-mobile,
 .contact .mobile-menu a {
     color: #fff
 }
 
-/* Navbar & Footer styles moved to components */
 
 @media (max-width:992px) {
-
-    /* .about styles moved to about.astro */
 
     .logo-desk,
     .vert-menu {
@@ -193,7 +172,6 @@ h2 {
         display: block
     }
 
-    /* Navbar styles moved */
 
     .al-sadeh,
     .album {
@@ -251,23 +229,13 @@ h2 {
         text-align: center
     }
 
-    /* .about styles moved to about.astro */
-
-    /* Navbar/Footer styles moved */
-
     .col {
         margin: 20px auto
     }
 
-    /* .footer moved */
-
     .spacer,
     .vertical-nav {
         width: 0 !important
-    }
-
-    .vertical-nav {
-        /* moved */
     }
 
     .al-sadeh,
@@ -340,7 +308,6 @@ h2 {
     }
 }
 
-/* Animations simplified to fadeIn */
 @keyframes fadeIn {
     from {
         opacity: 0
@@ -392,8 +359,6 @@ h2 {
 .s-icon a {
     display: inline-block
 }
-
-/* Legacy player styles removed */
 
 
 .al-sadeh .play-list,
