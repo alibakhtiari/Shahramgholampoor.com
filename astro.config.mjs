@@ -9,6 +9,10 @@ import cloudflare from '@astrojs/cloudflare';
 export default defineConfig({
   site: 'https://shahramgholampoor.com',
   output: 'static',
+  trailingSlash: 'never',
+  build: {
+    format: 'file'
+  },
   adapter: cloudflare(),
   integrations: [sitemap()]
 });
