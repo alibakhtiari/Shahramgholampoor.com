@@ -1,5 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import bgAbout from "../assets/img/about.webp";
+import bgAboutM from "../assets/img/about.m.webp";
 const description =
     "Biography, education, and filmography of Iranian composer and pianist Shahram Gholampoor.";
 
@@ -25,7 +28,18 @@ const schema = JSON.stringify({
 >
     <script type="application/ld+json" set:html={schema} slot="head" />
     <div class="col about">
-        <div class="img animated fadeIn"></div>
+        <div class="img-container animated fadeIn">
+            <Image
+                src={bgAbout}
+                alt="Shahram Gholampoor"
+                class="profile-img desktop-img"
+            />
+            <Image
+                src={bgAboutM}
+                alt="Shahram Gholampoor"
+                class="profile-img mobile-img"
+            />
+        </div>
         <div class="text animated fadeIn">
             <p><strong>Education</strong></p>
             <ul>
@@ -235,3 +249,48 @@ const schema = JSON.stringify({
         </div>
     </div>
 </Layout>
+
+<style>
+    /* Inlined from main.css .about & .about .img */
+    .about {
+        float: right;
+        width: 60%;
+        margin-bottom: 100px;
+    }
+    .text {
+        padding-right: 100px;
+    }
+    .profile-img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+    }
+    .mobile-img {
+        display: none;
+    }
+
+    @media (max-width: 992px) {
+        .about {
+            float: none;
+            width: 100%;
+        }
+        .text {
+            padding: 0;
+            text-align: justify;
+            margin: 30px;
+        }
+    }
+    @media (max-width: 768px) {
+        .desktop-img {
+            display: none;
+        }
+        .mobile-img {
+            display: block;
+            width: 90%;
+            margin: 0 auto;
+        }
+        .text {
+            padding: 0;
+        }
+    }
+</style>

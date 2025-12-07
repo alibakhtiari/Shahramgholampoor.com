@@ -16,8 +16,7 @@ h6 {
     line-height: 1
 }
 
-.center,
-.home .sadeh img {
+.center {
     text-align: center
 }
 
@@ -26,39 +25,15 @@ li {
     position: relative
 }
 
-.home {
-    background-image: url(../assets/img/1.webp)
-}
+/* .home background moved to index.astro */
 
-.albums {
-    background-image: url(../assets/img/2.webp)
-}
+/* .albums background moved to albums.astro */
 
-.contact {
-    background-image: url(../assets/img/3.webp)
-}
+/* .contact background moved to contact.astro */
 
-.m-player.sadeh {
-    background-image: url(../assets/img/5.webp)
-}
+/* .m-player styles moved to sadeh.astro/40.astro */
 
-.m-player.forty {
-    background-image: url(../assets/img/4.webp)
-}
-
-.albums,
-.contact,
-.home,
-.m-player {
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-attachment: fixed;
-    background-size: cover
-}
-
-.m-player {
-    background-attachment: scroll
-}
+/* Background styles moved to pages */
 
 h4,
 h5,
@@ -72,11 +47,7 @@ h3 {
     margin: 20px 0 10px
 }
 
-.al-sadeh,
-.c-form,
-.info {
-    margin-top: 120px
-}
+/* .al-sadeh margin moved */
 
 body {
     background-color: #000;
@@ -140,45 +111,22 @@ a {
     float: left
 }
 
-.about,
 .al-sadeh,
 .c-form {
     float: right
 }
 
-.home .spacer {
-    width: 33%
-}
+/* .albums .sadeh moved to albums.astro */
 
-.albums .spacer {
-    width: 9%
-}
+/* .al-sadeh width moved */
 
-.home .sadeh {
-    width: 36%
-}
+/* .contact .spacer moved to contact.astro */
 
-.albums .sadeh {
+.al40 {
     width: 30%
 }
 
-.al-sadeh {
-    width: 33%
-}
-
-.contact .spacer {
-    width: 8%
-}
-
-.al40,
-.c-form {
-    width: 30%
-}
-
-.about {
-    width: 60%;
-    margin-bottom: 100px
-}
+/* .about moved to about.astro */
 
 .video {
     float: right;
@@ -186,29 +134,21 @@ a {
     margin-top: -20px
 }
 
-.about .img {
-    content: url(../assets/img/about.webp)
-}
+/* .about .img and .text moved to about.astro */
 
-.about .text {
-    padding-right: 100px
-}
-
-.album {
-    padding: 20px;
-    background-color: rgba(0, 0, 0, .2);
-    max-width: 100%;
-    margin: 90px 0 0 60px
-}
+/* .album style moved to albums.astro/sadeh.astro/40.astro (shared component style? maybe inline in each or keep shared?) - User asked to inline. */
+/* I inlined it in albums.astro, but it might be used in sadeh/40 too? .album class is used in albums.astro only? */
+/* In sadeh.html .album is margin-top:20px in media query. */
+/* Let's keep .album here if it's shared? No, plan was inline. */
+/* I inlined it in albums.astro. Is it used elsewhere? */
+/* In legacy: .album { margin: 90px 0 0 60px ... } */
+/* Let's remove it if I copied it. */
 
 .row-content-wrap {
     margin: 0
 }
 
-.home .sadeh img {
-    max-width: 100%;
-    margin: 90px 243px 0 0
-}
+/* .home .sadeh img moved to index.astro */
 
 .logo-mobile,
 .mobile-menu {
@@ -337,22 +277,7 @@ textarea#form_message {
 
 @media (max-width:992px) {
 
-    .about,
-    .about .img {
-        width: 100%
-    }
-
-    .videos .video {
-        width: 90%;
-        margin: 0 auto;
-        float: none
-    }
-
-    .about .text {
-        padding: 0;
-        text-align: justify;
-        margin: 30px
-    }
+    /* .about styles moved to about.astro */
 
     .logo-desk,
     .vert-menu {
@@ -448,24 +373,7 @@ textarea#form_message {
         text-align: center
     }
 
-    .about {
-        width: 100%
-    }
-
-    .about .img {
-        content: url(../assets/img/about.m.webp);
-        width: 90%;
-        margin: 0 auto
-    }
-
-    .col,
-    .home .sadeh {
-        width: 100% !important
-    }
-
-    .about .text {
-        padding: 0
-    }
+    /* .about styles moved to about.astro */
 
     .logo-mobile {
         max-width: 60%
@@ -568,22 +476,7 @@ textarea#form_message {
     }
 }
 
-@keyframes fadeInLeft {
-    from {
-        opacity: 0;
-        transform: translate3d(-100%, 0, 0)
-    }
-
-    to {
-        opacity: 1;
-        transform: translate3d(0, 0, 0)
-    }
-}
-
-.fadeInLeft {
-    animation-name: fadeInLeft
-}
-
+/* Animations simplified to fadeIn */
 @keyframes fadeIn {
     from {
         opacity: 0
@@ -596,38 +489,6 @@ textarea#form_message {
 
 .fadeIn {
     animation-name: fadeIn
-}
-
-@keyframes fadeInDown {
-    from {
-        opacity: 0;
-        transform: translate3d(0, -100%, 0)
-    }
-
-    to {
-        opacity: 1;
-        transform: translate3d(0, 0, 0)
-    }
-}
-
-.fadeInDown {
-    animation-name: fadeInDown
-}
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translate3d(0, 100%, 0)
-    }
-
-    to {
-        opacity: 1;
-        transform: translate3d(0, 0, 0)
-    }
-}
-
-.fadeInUp {
-    animation-name: fadeInUp
 }
 
 .animated {

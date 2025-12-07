@@ -18,6 +18,7 @@ const schema = JSON.stringify({
 });
 
 import bg3 from "../assets/img/3.webp";
+import { Image } from "astro:assets";
 ---
 
 <Layout
@@ -25,8 +26,16 @@ import bg3 from "../assets/img/3.webp";
     description={description}
     bodyClass="contact full-width"
     activePage="contact"
-    backgroundUrl={bg3.src}
 >
+    <!-- Background Image -->
+    <Image
+        src={bg3}
+        alt="Background"
+        class="fixed-bg"
+        loading="eager"
+        fetchpriority="high"
+    />
+
     <script type="application/ld+json" set:html={schema} slot="head" />
     <div class="row container">
         <div class="full-height row-content-wrap">
@@ -182,5 +191,55 @@ import bg3 from "../assets/img/3.webp";
         background-position: -1px -68px;
         width: 14px;
         height: 14px;
+    }
+
+    /* Inlined from main.css .contact */
+    .fixed-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        z-index: -1;
+        object-fit: cover;
+        object-position: center;
+    }
+    .spacer {
+        width: 8%;
+    }
+    .info {
+        margin-top: 120px;
+        float: right; /* .info is .col */
+    }
+    .c-form {
+        width: 30%;
+        margin-top: 120px;
+        float: right;
+    }
+
+    @media (max-width: 992px) {
+        .spacer {
+            max-width: none;
+            width: 0 !important;
+            flex: 0 1 auto;
+        }
+    }
+    @media (max-width: 768px) {
+        .spacer {
+            width: 0 !important;
+        }
+        .info p {
+            text-align: center;
+        }
+        input#form_email,
+        input#form_name,
+        textarea#form_message {
+            width: 94%;
+            padding: 3%;
+        }
+        #contact-form {
+            width: 90%;
+            margin: 0 auto;
+        }
     }
 </style>

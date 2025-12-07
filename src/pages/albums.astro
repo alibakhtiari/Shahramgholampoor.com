@@ -10,8 +10,16 @@ import bg2 from "../assets/img/2.webp";
     title="Albums – Shahram Gholampoor"
     bodyClass="albums full-width"
     activePage="albums"
-    backgroundUrl={bg2.src}
 >
+    <!-- Background Image -->
+    <Image
+        src={bg2}
+        alt="Background"
+        class="fixed-bg"
+        loading="eager"
+        fetchpriority="high"
+    />
+
     <div class="col spacer"></div>
     <div class="col center sadeh animated fadeIn delay-1s slow">
         <a href="/sadeh" target="_self">
@@ -34,3 +42,58 @@ import bg2 from "../assets/img/2.webp";
         </a>
     </div>
 </Layout>
+
+<style>
+    /* Inlined from main.css .albums */
+    .fixed-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        z-index: -1;
+        object-fit: cover;
+        object-position: center;
+    }
+    .spacer {
+        width: 9%;
+    }
+    .sadeh {
+        width: 30%;
+        text-align: center;
+    }
+    .al40 {
+        width: 30%; /* Assumed from context, legacy al40 was 30% */
+        /* wait main.css said .al40 { width: 30% } but also .albums .sadeh { width: 30% } */
+        /* Legacy .albums .sadeh { width: 30% } */
+    }
+    .album {
+        padding: 20px;
+        background-color: rgba(0, 0, 0, 0.2);
+        max-width: 100%;
+        margin: 90px 0 0 60px;
+    }
+
+    @media (max-width: 992px) {
+        .spacer {
+            max-width: none;
+            width: 0 !important;
+            flex: 0 1 auto;
+        }
+        .sadeh,
+        .al40 {
+            width: 50%;
+        }
+        .album {
+            margin-top: 20px;
+        }
+    }
+    @media (max-width: 768px) {
+        .album {
+            margin: 0;
+        }
+        .spacer {
+            width: 0 !important;
+        }
+    }
+</style>

@@ -47,8 +47,16 @@ import bg4 from "../assets/img/4.webp";
     bodyClass="m-player forty full-width"
     activePage="albums"
     description={description}
-    backgroundUrl={bg4.src}
 >
+    <!-- Background Image -->
+    <Image
+        src={bg4}
+        alt="Background"
+        class="fixed-bg"
+        loading="eager"
+        fetchpriority="high"
+    />
+
     <script type="application/ld+json" set:html={schema} slot="head" />
     <div class="col al-sadeh">
         <div class="animated fadeIn">
@@ -253,7 +261,6 @@ import bg4 from "../assets/img/4.webp";
 </script>
 
 <style>
-    /* Add any custom styles here if needed, or rely on global.css */
     .play-list {
         margin-top: 20px;
     }
@@ -263,5 +270,40 @@ import bg4 from "../assets/img/4.webp";
     .play-link.active {
         font-weight: bold;
         color: #ddd;
+    }
+
+    /* Inlined from main.css .m-player, .al-sadeh etc */
+    .fixed-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        z-index: -1;
+        object-fit: cover;
+        object-position: center;
+    }
+    .al-sadeh {
+        width: 33%; /* Uses .al-sadeh class */
+        margin-top: 120px;
+        float: right;
+    }
+    .albums-art img {
+        width: 100%;
+        height: auto;
+    }
+
+    @media (max-width: 992px) {
+        .al-sadeh {
+            margin-top: 20px;
+            width: 50%;
+        }
+    }
+    @media (max-width: 768px) {
+        .al-sadeh {
+            width: 100%;
+            margin: 0;
+            float: none;
+        }
     }
 </style>

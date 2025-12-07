@@ -11,8 +11,6 @@ interface Props {
     image?: string;
     bodyClass?: string;
     activePage?: string;
-    backgroundUrl?: string;
-    mobileBackgroundUrl?: string;
 }
 
 const {
@@ -21,8 +19,6 @@ const {
     image = "/og-image.jpg",
     bodyClass = "home full-width",
     activePage = "home",
-    backgroundUrl,
-    mobileBackgroundUrl,
 } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
@@ -96,26 +92,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         </script>
         <ViewTransitions />
     </head>
-    <body
-        class={bodyClass}
-        style={!mobileBackgroundUrl && backgroundUrl
-            ? `background-image: url(${backgroundUrl});`
-            : ""}
-    >
-        {
-            mobileBackgroundUrl && backgroundUrl && (
-                <div class="background-wrapper">
-                    <picture>
-                        <source
-                            media="(max-width: 768px)"
-                            srcset={mobileBackgroundUrl}
-                        />
-                        <img src={backgroundUrl} alt="" role="presentation" />
-                    </picture>
-                </div>
-            )
-        }
-
+    <body class={bodyClass}>
         <div class="row container">
             <div class="full-height row-content-wrap">
                 <MobileMenu activePage={activePage} />
@@ -124,22 +101,5 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
                 <Footer />
             </div>
         </div>
-        <style>
-            .background-wrapper {
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100vh;
-                z-index: -1;
-                overflow: hidden;
-            }
-            .background-wrapper img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                object-position: center;
-            }
-        </style>
     </body>
 </html>
