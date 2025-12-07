@@ -1,14 +1,38 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
+const description =
+    "Biography, education, and filmography of Iranian composer and pianist Shahram Gholampoor.";
+
+const schema = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    dateCreated: "2024-01-01",
+    mainEntity: {
+        "@type": "Person",
+        name: "Shahram Gholampoor",
+        jobTitle: "Composer",
+        description: description,
+        image: new URL("/assets/img/about.jpg", Astro.site),
+    },
+});
 ---
 
-<Layout title="About – Shahram Gholampoor" bodyClass="abouts full-width" activePage="about">
+<Layout
+    title="About – Shahram Gholampoor"
+    bodyClass="abouts full-width"
+    activePage="about"
+    description={description}
+>
+    <script type="application/ld+json" set:html={schema} slot="head" />
     <div class="col about">
         <div class="img animated fadeIn"></div>
         <div class="text animated fadeIn">
             <p><strong>Education</strong></p>
             <ul>
-                <li>2000 Bachelor of Musicology (Iranian classical music), Fine Arts Department, Tehran University, Tehran, Iran</li>
+                <li>
+                    2000 Bachelor of Musicology (Iranian classical music), Fine
+                    Arts Department, Tehran University, Tehran, Iran
+                </li>
             </ul>
             <p><strong>Principal Teachers</strong></p>
             <ul>
@@ -16,53 +40,130 @@ import Layout from '../layouts/Layout.astro';
                 <li>2002 Mitra Dabirian, Piano, Tehran, Iran</li>
                 <li>2001 Emanuell Melik Aslanian, Piano, Tehran, Iran</li>
                 <li>1999 Darshan Anand Singh, Tabla, Tehran, Iran</li>
-                <li>1990 Asadollah Malek, Violin and Radif (Traditional Persian Music) tehran, Iran</li>
+                <li>
+                    1990 Asadollah Malek, Violin and Radif (Traditional Persian
+                    Music) tehran, Iran
+                </li>
                 <li>1998 Darioush Salari, Sitar, tehran, Iran</li>
-                <li>1998 Mousa Zangshahi and Din Mohammad Zangshahi, Balouchestan Music, Zahedan, Iran</li>
+                <li>
+                    1998 Mousa Zangshahi and Din Mohammad Zangshahi,
+                    Balouchestan Music, Zahedan, Iran
+                </li>
                 <li>1986 Jallal Manzoorifard, Piano, tehran, Iran</li>
             </ul>
             <p><strong>Teaching</strong></p>
             <ul>
-                <li>1991-2008 Violin Instructors, Culture and Guidance Ministry, Qazvin, Iran</li>
-                <li>1993-2008 Piano Instructors, Culture and Guidance Ministry, Qazvin, Iran</li>
-                <li>1995-1998 Piano Instructors, Rasam Istitute of Higher Education, Tehran, Iran</li>
-                <li>2001-2001 Piano and violin Instructor, Daneshvar music academi, Karaj, Iran</li>
-                <li>2003- 2006 Piano and violin Instructor, Taraneh Aref music academi, Qazvin, Iran</li>
-                <li>2007 Piano and violin Instructor, Chakameh music academi, Qazvin, Iran</li>
+                <li>
+                    1991-2008 Violin Instructors, Culture and Guidance Ministry,
+                    Qazvin, Iran
+                </li>
+                <li>
+                    1993-2008 Piano Instructors, Culture and Guidance Ministry,
+                    Qazvin, Iran
+                </li>
+                <li>
+                    1995-1998 Piano Instructors, Rasam Istitute of Higher
+                    Education, Tehran, Iran
+                </li>
+                <li>
+                    2001-2001 Piano and violin Instructor, Daneshvar music
+                    academi, Karaj, Iran
+                </li>
+                <li>
+                    2003- 2006 Piano and violin Instructor, Taraneh Aref music
+                    academi, Qazvin, Iran
+                </li>
+                <li>
+                    2007 Piano and violin Instructor, Chakameh music academi,
+                    Qazvin, Iran
+                </li>
             </ul>
             <p>&nbsp;</p>
             <p><strong>Filmography as Composer</strong></p>
             <ul>
-                <li>2015 Tomorrow is Another Day, Directed by Mohammadreza Zehtabi, Drama</li>
-                <li>2013 Fingertips of the Angel, Directed by Mohsen Aghalar, Drama</li>
+                <li>
+                    2015 Tomorrow is Another Day, Directed by Mohammadreza
+                    Zehtabi, Drama
+                </li>
+                <li>
+                    2013 Fingertips of the Angel, Directed by Mohsen Aghalar,
+                    Drama
+                </li>
                 <li>2012 Heyran’, Produced by Abbas Rafeie, TV Film</li>
-                <li>2011-2015 Maybe it Happens to You too, Produced by Akbar Tahvilian, TV Series</li>
-                <li>2011 I am the Lonely Tree, Directed by Majid Asheqi, Documentary</li>
-                <li>2009 Presence sans Presence, Drama, by Tooraj Khamenehzadeh, Video Installation</li>
-                <li>2007 Sunflower Motel, Directed by Mohsen Aghalar, Comedian TV Series</li>
-                <li>2005 Immortal Legacy, Directed by Amir yousefi, Documentary Series</li>
-                <li>2004 End of the Earth, Directed by Abolfazl Saffari, Drama</li>
-                <li>2003 Blue Sea, Directed by Masoumeh Nourmohammadi, Documentary Series</li>
-                <li>2002 Pars sea, Directed by Abolfazl Saffari, Documentary</li>
+                <li>
+                    2011-2015 Maybe it Happens to You too, Produced by Akbar
+                    Tahvilian, TV Series
+                </li>
+                <li>
+                    2011 I am the Lonely Tree, Directed by Majid Asheqi,
+                    Documentary
+                </li>
+                <li>
+                    2009 Presence sans Presence, Drama, by Tooraj Khamenehzadeh,
+                    Video Installation
+                </li>
+                <li>
+                    2007 Sunflower Motel, Directed by Mohsen Aghalar, Comedian
+                    TV Series
+                </li>
+                <li>
+                    2005 Immortal Legacy, Directed by Amir yousefi, Documentary
+                    Series
+                </li>
+                <li>
+                    2004 End of the Earth, Directed by Abolfazl Saffari, Drama
+                </li>
+                <li>
+                    2003 Blue Sea, Directed by Masoumeh Nourmohammadi,
+                    Documentary Series
+                </li>
+                <li>
+                    2002 Pars sea, Directed by Abolfazl Saffari, Documentary
+                </li>
                 <li>1998 Vosough Reality, Directed by Hassan Lotfi, Drama</li>
             </ul>
             <p><strong>Commissions</strong></p>
             <ul>
-                <li>2008 Qazvin National Anthem", Commissioned by Cultural Heritage, Handicrafts and Tourism Organization of Qazvin</li>
+                <li>
+                    2008 Qazvin National Anthem", Commissioned by Cultural
+                    Heritage, Handicrafts and Tourism Organization of Qazvin
+                </li>
             </ul>
             <p><strong>Collaborations</strong></p>
             <ul>
-                <li>2015 Song of the Homeland, Performing and Recording with Symphony Orchestra, Poet: Ishagh Anvar</li>
-                <li>2008 Shams-ol-Emareh, Directed by Saman Moghaddam, Drama</li>
-                <li>1988 Cooperation with the Vocal Band and Revolutionary Songs in Qazvin’s Culture and Guidance Ministry</li>
+                <li>
+                    2015 Song of the Homeland, Performing and Recording with
+                    Symphony Orchestra, Poet: Ishagh Anvar
+                </li>
+                <li>
+                    2008 Shams-ol-Emareh, Directed by Saman Moghaddam, Drama
+                </li>
+                <li>
+                    1988 Cooperation with the Vocal Band and Revolutionary Songs
+                    in Qazvin’s Culture and Guidance Ministry
+                </li>
             </ul>
             <p><strong>Selected Performances</strong></p>
             <ul>
-                <li>2008 Piano quintet and concert performance of artworks of Shahram Gholampoor</li>
-                <li>2000 Holding two concerts accompanied by the first rock band ‘Pejhvak band’, supervising by Amir Tavassoli.</li>
-                <li>1999 Holding the first Pop band concert, Padideh music band.</li>
-                <li>1998 Holding the first ‘Traditional Music Orchestra’ concert in Qazvin.</li>
-                <li>1995 Holding first piano research recital, Hellal ahmar hall, Qazvin city.</li>
+                <li>
+                    2008 Piano quintet and concert performance of artworks of
+                    Shahram Gholampoor
+                </li>
+                <li>
+                    2000 Holding two concerts accompanied by the first rock band
+                    ‘Pejhvak band’, supervising by Amir Tavassoli.
+                </li>
+                <li>
+                    1999 Holding the first Pop band concert, Padideh music band.
+                </li>
+                <li>
+                    1998 Holding the first ‘Traditional Music Orchestra’ concert
+                    in Qazvin.
+                </li>
+                <li>
+                    1995 Holding first piano research recital, Hellal ahmar
+                    hall, Qazvin city.
+                </li>
             </ul>
             <p><strong>Juror</strong></p>
             <ul>
@@ -70,28 +171,65 @@ import Layout from '../layouts/Layout.astro';
             </ul>
             <p><strong>Awards</strong></p>
             <ul>
-                <li>1991 Third Prize, National Music School Competition at Nishapur</li>
+                <li>
+                    1991 Third Prize, National Music School Competition at
+                    Nishapur
+                </li>
             </ul>
             <p><strong>Publishing / CD Recordings</strong></p>
             <ul>
-                <li>2014 “40”, Performing and Recording, Provided by the Orchard Enterprises, United State of America</li>
-                <li>2016 “Sadeh”, Performing and Recording, Provided by the Orchard Enterprises, United State of America</li>
+                <li>
+                    2014 “40”, Performing and Recording, Provided by the Orchard
+                    Enterprises, United State of America
+                </li>
+                <li>
+                    2016 “Sadeh”, Performing and Recording, Provided by the
+                    Orchard Enterprises, United State of America
+                </li>
             </ul>
             <p><strong>Professional Experiences</strong></p>
             <ul>
-                <li>2009 Composer Consultant for “Mokhtarnameh”, Directed by Davoud Mirbaqeri, TV Series</li>
-                <li>2011 Composer Consultant for “Fall of an Angel”, Directed by Bahram Bahramian, TV Series</li>
-                <li>2012 Composer Consultant for “Beautiful revolution”,Produced by Ramin Abbasizadeh, TV Series</li>
-                <li>2012 Composer Consultant and Cooperation in Recording SoundTracks for “Yalda”, Directed by Davood Mirbaqeri, TV Series</li>
-                <li>2014 Composer Consultant for “Sperm Whale”, Directed by Saman Moqadam, Drama</li>
-                <li>2015 Composer Consultant for “50 Kilo Albaloo”, Directed by Mani Haghighi, Drama</li>
-                <li>2015 Composer Consultant for ‘I am not Salvador’, directed by Manouchehr Hadi.</li>
-                <li>2016-2017 Composer Consultant for “Shahrzad”, Directed by Hassan Fathi. TV Series (Three Seasons)</li>
+                <li>
+                    2009 Composer Consultant for “Mokhtarnameh”, Directed by
+                    Davoud Mirbaqeri, TV Series
+                </li>
+                <li>
+                    2011 Composer Consultant for “Fall of an Angel”, Directed by
+                    Bahram Bahramian, TV Series
+                </li>
+                <li>
+                    2012 Composer Consultant for “Beautiful revolution”,Produced
+                    by Ramin Abbasizadeh, TV Series
+                </li>
+                <li>
+                    2012 Composer Consultant and Cooperation in Recording
+                    SoundTracks for “Yalda”, Directed by Davood Mirbaqeri, TV
+                    Series
+                </li>
+                <li>
+                    2014 Composer Consultant for “Sperm Whale”, Directed by
+                    Saman Moqadam, Drama
+                </li>
+                <li>
+                    2015 Composer Consultant for “50 Kilo Albaloo”, Directed by
+                    Mani Haghighi, Drama
+                </li>
+                <li>
+                    2015 Composer Consultant for ‘I am not Salvador’, directed
+                    by Manouchehr Hadi.
+                </li>
+                <li>
+                    2016-2017 Composer Consultant for “Shahrzad”, Directed by
+                    Hassan Fathi. TV Series (Three Seasons)
+                </li>
             </ul>
             <p>Master classes</p>
             <ul>
                 <li>2001 Master class in Conducting by Edo Micic</li>
-                <li>2001 Master class in piano by Gerhard Geretschläger from Austria</li>
+                <li>
+                    2001 Master class in piano by Gerhard Geretschläger from
+                    Austria
+                </li>
                 <li>2016 Master class in film scoring by Hanz Zimmer.</li>
             </ul>
         </div>

@@ -1,50 +1,127 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import { Image } from 'astro:assets';
+import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
 
 // Import images
-import vid2022Poster from '../assets/vid/2022.jpg';
-import vid2022Thumb from '../assets/vid/2022.t.jpg';
-import vid2018_6Poster from '../assets/vid/2018.6.jpg';
-import vid2018_6Thumb from '../assets/vid/2018.6t.jpg';
-import vid2018_5Poster from '../assets/vid/2018.5.jpg';
-import vid2018_5Thumb from '../assets/vid/2018.5t.jpg';
-import vid2018_4Poster from '../assets/vid/2018.4.jpg';
-import vid2018_4Thumb from '../assets/vid/2018.4t.jpg';
-import vid2018_3Poster from '../assets/vid/2018.3.jpg';
-import vid2018_3Thumb from '../assets/vid/2018.3t.jpg';
-import vid2018_2Poster from '../assets/vid/2018.2.jpg';
-import vid2018_2Thumb from '../assets/vid/2018.2t.jpg';
-import vid2017Poster from '../assets/vid/2017.jpg';
-import vid2017Thumb from '../assets/vid/2017t.jpg';
-import vid2008Poster from '../assets/vid/2008.jpg';
-import vid2008Thumb from '../assets/vid/2008t.jpg';
-import vid1998Poster from '../assets/vid/1998.jpg';
-import vid1998Thumb from '../assets/vid/1998t.jpg';
+import vid2022Poster from "../assets/vid/2022.jpg";
+import vid2022Thumb from "../assets/vid/2022.t.jpg";
+import vid2018_6Poster from "../assets/vid/2018.6.jpg";
+import vid2018_6Thumb from "../assets/vid/2018.6t.jpg";
+import vid2018_5Poster from "../assets/vid/2018.5.jpg";
+import vid2018_5Thumb from "../assets/vid/2018.5t.jpg";
+import vid2018_4Poster from "../assets/vid/2018.4.jpg";
+import vid2018_4Thumb from "../assets/vid/2018.4t.jpg";
+import vid2018_3Poster from "../assets/vid/2018.3.jpg";
+import vid2018_3Thumb from "../assets/vid/2018.3t.jpg";
+import vid2018_2Poster from "../assets/vid/2018.2.jpg";
+import vid2018_2Thumb from "../assets/vid/2018.2t.jpg";
+import vid2017Poster from "../assets/vid/2017.jpg";
+import vid2017Thumb from "../assets/vid/2017t.jpg";
+import vid2008Poster from "../assets/vid/2008.jpg";
+import vid2008Thumb from "../assets/vid/2008t.jpg";
+import vid1998Poster from "../assets/vid/1998.jpg";
+import vid1998Thumb from "../assets/vid/1998t.jpg";
 
 // Video Data
 const videos = [
-    { id: '2022', title: '2022', src: 'https://raw.githubusercontent.com/alibakhtiari/Shahramgholampoor.com/main/assets/vid/2022.mp4', thumb: vid2022Thumb, poster: vid2022Poster },
-    { id: '2018.6', title: '2018.6', src: 'https://raw.githubusercontent.com/alibakhtiari/Shahramgholampoor.com/main/assets/vid/2018.6.mp4', thumb: vid2018_6Thumb, poster: vid2018_6Poster },
-    { id: '2018.5', title: '2018.5', src: 'https://raw.githubusercontent.com/alibakhtiari/Shahramgholampoor.com/main/assets/vid/2018.5.mp4', thumb: vid2018_5Thumb, poster: vid2018_5Poster },
-    { id: '2018.4', title: '2018.4', src: 'https://raw.githubusercontent.com/alibakhtiari/Shahramgholampoor.com/main/assets/vid/2018.4.mp4', thumb: vid2018_4Thumb, poster: vid2018_4Poster },
-    { id: '2018.3', title: '2018.3', src: 'https://raw.githubusercontent.com/alibakhtiari/Shahramgholampoor.com/main/assets/vid/2018.3.mp4', thumb: vid2018_3Thumb, poster: vid2018_3Poster },
-    { id: '2018.2', title: '2018.2', src: 'https://raw.githubusercontent.com/alibakhtiari/Shahramgholampoor.com/main/assets/vid/2018.2.mp4', thumb: vid2018_2Thumb, poster: vid2018_2Poster },
-    { id: '2017', title: '2017', src: '/assets/vid/2017.mp4', thumb: vid2017Thumb, poster: vid2017Poster },
-    { id: '2008', title: '2008', src: '/assets/vid/2008.mp4', thumb: vid2008Thumb, poster: vid2008Poster },
-    { id: '1998', title: '1998', src: '/assets/vid/1998.mp4', thumb: vid1998Thumb, poster: vid1998Poster },
+    {
+        id: "2022",
+        title: "2022",
+        src: "https://raw.githubusercontent.com/alibakhtiari/Shahramgholampoor.com/main/assets/vid/2022.mp4",
+        thumb: vid2022Thumb,
+        poster: vid2022Poster,
+    },
+    {
+        id: "2018.6",
+        title: "2018.6",
+        src: "https://raw.githubusercontent.com/alibakhtiari/Shahramgholampoor.com/main/assets/vid/2018.6.mp4",
+        thumb: vid2018_6Thumb,
+        poster: vid2018_6Poster,
+    },
+    {
+        id: "2018.5",
+        title: "2018.5",
+        src: "https://raw.githubusercontent.com/alibakhtiari/Shahramgholampoor.com/main/assets/vid/2018.5.mp4",
+        thumb: vid2018_5Thumb,
+        poster: vid2018_5Poster,
+    },
+    {
+        id: "2018.4",
+        title: "2018.4",
+        src: "https://raw.githubusercontent.com/alibakhtiari/Shahramgholampoor.com/main/assets/vid/2018.4.mp4",
+        thumb: vid2018_4Thumb,
+        poster: vid2018_4Poster,
+    },
+    {
+        id: "2018.3",
+        title: "2018.3",
+        src: "https://raw.githubusercontent.com/alibakhtiari/Shahramgholampoor.com/main/assets/vid/2018.3.mp4",
+        thumb: vid2018_3Thumb,
+        poster: vid2018_3Poster,
+    },
+    {
+        id: "2018.2",
+        title: "2018.2",
+        src: "https://raw.githubusercontent.com/alibakhtiari/Shahramgholampoor.com/main/assets/vid/2018.2.mp4",
+        thumb: vid2018_2Thumb,
+        poster: vid2018_2Poster,
+    },
+    {
+        id: "2017",
+        title: "2017",
+        src: "/assets/vid/2017.mp4",
+        thumb: vid2017Thumb,
+        poster: vid2017Poster,
+    },
+    {
+        id: "2008",
+        title: "2008",
+        src: "/assets/vid/2008.mp4",
+        thumb: vid2008Thumb,
+        poster: vid2008Poster,
+    },
+    {
+        id: "1998",
+        title: "1998",
+        src: "/assets/vid/1998.mp4",
+        thumb: vid1998Thumb,
+        poster: vid1998Poster,
+    },
 ];
 
 const initialVideo = videos[0];
+
+const description =
+    "Watch selected video performances and compositions by Shahram Gholampoor.";
+
+const schema = JSON.stringify(
+    videos.map((video) => ({
+        "@context": "https://schema.org",
+        "@type": "VideoObject",
+        name: `Shahram Gholampoor - ${video.title}`,
+        description: `Performance or Composition: ${video.title}`,
+        thumbnailUrl: [new URL(video.thumb.src, Astro.site)],
+        uploadDate: "2024-01-01",
+        contentUrl: video.src.startsWith("http")
+            ? video.src
+            : new URL(video.src, Astro.site),
+        embedUrl: new URL("/video", Astro.site),
+    })),
+);
 ---
 
-<Layout title="Videos – Shahram Gholampoor" bodyClass="videos full-width" activePage="video">
+<Layout
+    title="Videos – Shahram Gholampoor"
+    bodyClass="videos full-width"
+    activePage="video"
+    description={description}
+>
     <div class="video-container animated fadeIn">
         <!-- Main Player -->
         <div class="main-player-wrapper">
-            <video 
-                id="main-video" 
-                controls 
+            <video
+                id="main-video"
+                controls
                 poster={initialVideo.poster.src}
                 src={initialVideo.src}
                 class="main-video"
@@ -57,58 +134,93 @@ const initialVideo = videos[0];
         <div class="video-selector">
             <div class="carousel-container">
                 <button class="nav-btn prev" aria-label="Previous videos">
-                    <svg viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+                    <svg viewBox="0 0 24 24" width="24" height="24"
+                        ><path
+                            fill="currentColor"
+                            d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"
+                        ></path></svg
+                    >
                 </button>
-                
+
                 <div class="carousel-track" id="video-track">
-                    {videos.map((video, index) => (
-                        <div class={`carousel-item ${index === 0 ? 'active' : ''}`} data-src={video.src} data-poster={video.poster.src}>
-                            <div class="thumb-wrapper">
-                                <Image src={video.thumb} alt={`Video ${video.title}`} />
-                                <div class="play-overlay">
-                                    <svg viewBox="0 0 24 24" width="32" height="32"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>
+                    {
+                        videos.map((video, index) => (
+                            <div
+                                class={`carousel-item ${index === 0 ? "active" : ""}`}
+                                data-src={video.src}
+                                data-poster={video.poster.src}
+                            >
+                                <div class="thumb-wrapper">
+                                    <Image
+                                        src={video.thumb}
+                                        alt={`Video ${video.title}`}
+                                    />
+                                    <div class="play-overlay">
+                                        <svg
+                                            viewBox="0 0 24 24"
+                                            width="32"
+                                            height="32"
+                                        >
+                                            <path
+                                                fill="currentColor"
+                                                d="M8 5v14l11-7z"
+                                            />
+                                        </svg>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    ))}
+                        ))
+                    }
                 </div>
 
                 <button class="nav-btn next" aria-label="Next videos">
-                    <svg viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+                    <svg viewBox="0 0 24 24" width="24" height="24"
+                        ><path
+                            fill="currentColor"
+                            d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
+                        ></path></svg
+                    >
                 </button>
             </div>
         </div>
     </div>
+    <script type="application/ld+json" set:html={schema} />
 </Layout>
 
 <script>
-    document.addEventListener('astro:page-load', () => {
-        const mainVideo = document.getElementById('main-video') as HTMLVideoElement;
-        const track = document.getElementById('video-track');
-        const items = document.querySelectorAll('.carousel-item');
-        const prevBtn = document.querySelector('.nav-btn.prev');
-        const nextBtn = document.querySelector('.nav-btn.next');
+    document.addEventListener("astro:page-load", () => {
+        const mainVideo = document.getElementById(
+            "main-video",
+        ) as HTMLVideoElement;
+        const track = document.getElementById("video-track");
+        const items = document.querySelectorAll(".carousel-item");
+        const prevBtn = document.querySelector(".nav-btn.prev");
+        const nextBtn = document.querySelector(".nav-btn.next");
 
         if (!mainVideo || !track) return;
 
         // Handle Video Selection
-        items.forEach(item => {
-            item.addEventListener('click', () => {
-                const src = item.getAttribute('data-src');
-                const poster = item.getAttribute('data-poster');
-                
+        items.forEach((item) => {
+            item.addEventListener("click", () => {
+                const src = item.getAttribute("data-src");
+                const poster = item.getAttribute("data-poster");
+
                 if (src && src !== mainVideo.src) {
                     // Update Active State
-                    items.forEach(i => i.classList.remove('active'));
-                    item.classList.add('active');
+                    items.forEach((i) => i.classList.remove("active"));
+                    item.classList.add("active");
 
                     // Update Video
                     mainVideo.src = src;
-                    mainVideo.poster = poster || '';
+                    mainVideo.poster = poster || "";
                     mainVideo.play();
-                    
+
                     // Scroll into view if needed
-                    item.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                    item.scrollIntoView({
+                        behavior: "smooth",
+                        block: "nearest",
+                        inline: "center",
+                    });
                 }
             });
         });
@@ -116,12 +228,12 @@ const initialVideo = videos[0];
         // Handle Carousel Navigation
         const scrollAmount = 200; // Adjust based on item width
 
-        prevBtn?.addEventListener('click', () => {
-            track.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+        prevBtn?.addEventListener("click", () => {
+            track.scrollBy({ left: -scrollAmount, behavior: "smooth" });
         });
 
-        nextBtn?.addEventListener('click', () => {
-            track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        nextBtn?.addEventListener("click", () => {
+            track.scrollBy({ left: scrollAmount, behavior: "smooth" });
         });
     });
 </script>
@@ -136,7 +248,7 @@ const initialVideo = videos[0];
         flex-direction: column;
         gap: 30px;
         /* Center vertically in the layout if needed, or margin-top handled by global css */
-        margin-top: 80px; 
+        margin-top: 80px;
     }
 
     /* Main Player */
@@ -146,8 +258,8 @@ const initialVideo = videos[0];
         background: #000;
         border-radius: 12px;
         overflow: hidden;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        border: 1px solid rgba(255,255,255,0.1);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .main-video {
@@ -163,7 +275,7 @@ const initialVideo = videos[0];
         backdrop-filter: blur(10px);
         border-radius: 12px;
         padding: 15px;
-        border: 1px solid rgba(255,255,255,0.1);
+        border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .carousel-container {
@@ -206,7 +318,7 @@ const initialVideo = videos[0];
     .carousel-item.active {
         opacity: 1;
         border-color: #fff;
-        box-shadow: 0 0 15px rgba(255,255,255,0.2);
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
     }
 
     .thumb-wrapper {
@@ -227,7 +339,7 @@ const initialVideo = videos[0];
         display: flex;
         align-items: center;
         justify-content: center;
-        background: rgba(0,0,0,0.3);
+        background: rgba(0, 0, 0, 0.3);
         opacity: 0;
         transition: opacity 0.3s;
     }
@@ -238,12 +350,12 @@ const initialVideo = videos[0];
 
     .play-overlay svg {
         color: #fff;
-        filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
     }
 
     /* Navigation Buttons */
     .nav-btn {
-        background: rgba(255,255,255,0.1);
+        background: rgba(255, 255, 255, 0.1);
         border: none;
         color: #fff;
         width: 36px;
@@ -258,7 +370,7 @@ const initialVideo = videos[0];
     }
 
     .nav-btn:hover {
-        background: rgba(255,255,255,0.2);
+        background: rgba(255, 255, 255, 0.2);
         transform: scale(1.1);
     }
 
