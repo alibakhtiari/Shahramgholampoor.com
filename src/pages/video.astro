@@ -37,7 +37,7 @@ const schema = JSON.stringify(
             <video
                 id="main-video"
                 controls
-                crossorigin
+                crossorigin="anonymous"
                 playsinline
                 poster={initialVideo.poster.src}
                 class="main-video"
@@ -105,11 +105,11 @@ const schema = JSON.stringify(
 </Layout>
 
 <script>
-    import Plyr from "plyr";
-
-    document.addEventListener("astro:page-load", () => {
+    document.addEventListener("astro:page-load", async () => {
         const videoElement = document.getElementById("main-video");
         if (!videoElement) return;
+
+        const { default: Plyr } = await import("plyr");
 
         const player = new Plyr("#main-video", {
             controls: [

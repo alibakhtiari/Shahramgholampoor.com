@@ -1,7 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
-import al40Img from "../assets/img/40.png";
+import al40Img from "../assets/img/40.webp";
 import "plyr/dist/plyr.css";
 
 const description =
@@ -15,7 +15,7 @@ const schema = JSON.stringify({
         "@type": "Person",
         name: "Shahram Gholampoor",
     },
-    image: new URL(al40Img.src, Astro.site),
+    image: new URL("/assets/img/40.webp", Astro.site),
     numTracks: 14,
     track: [
         { "@type": "MusicRecording", name: "The Birth", position: 1 },
@@ -39,7 +39,7 @@ const schema = JSON.stringify({
     ],
 });
 
-import bg4 from "../assets/img/4.jpg";
+import bg4 from "../assets/img/4.webp";
 ---
 
 <Layout
@@ -189,11 +189,11 @@ import bg4 from "../assets/img/4.jpg";
 </Layout>
 
 <script>
-    import Plyr from "plyr";
-
-    document.addEventListener("astro:page-load", () => {
+    document.addEventListener("astro:page-load", async () => {
         const playerElement = document.getElementById("player");
         if (!playerElement) return;
+
+        const { default: Plyr } = await import("plyr");
 
         const player = new Plyr("#player", {
             controls: ["play", "progress", "current-time", "mute", "volume"],

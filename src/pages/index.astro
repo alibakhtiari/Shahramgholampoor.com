@@ -1,14 +1,16 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
-import sadehHome from "../assets/img/sadeh-home.png";
-import bg1 from "../assets/img/1.jpg";
+import sadehHome from "../assets/img/sadeh-home.webp";
+import bg1 from "../assets/img/1.webp";
+import bg1m from "../assets/img/1.m.webp";
 ---
 
 <Layout
     title="Shahram Gholampoor – Official Website"
     activePage="home"
     backgroundUrl={bg1.src}
+    mobileBackgroundUrl={bg1m.src}
 >
     <div class="col spacer"></div>
     <div id="sadeh" class="col sadeh animated fadeIn delay-1s slow">

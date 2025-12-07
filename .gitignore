@@ -23,7 +23,11 @@ pnpm-debug.log*
 # Editors
 .vscode/
 
-# jetbrains setting folder
+# Build & Dependencies
+dist/
+node_modules/
+.astro/
+coverage/
 .idea/
 
 # Legacy
