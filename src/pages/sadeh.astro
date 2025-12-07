@@ -11,7 +11,7 @@ const tracks = albums["sadeh"];
 const description =
     "Listen to 'Sadeh', a music album by Shahram Gholampoor featuring 15 original tracks.";
 
-const schema = JSON.stringify({
+const schema = {
     "@context": "https://schema.org",
     "@type": "MusicAlbum",
     name: "Sadeh",
@@ -26,7 +26,7 @@ const schema = JSON.stringify({
         name: t.title,
         position: i + 1,
     })),
-});
+};
 
 import bg5 from "../assets/img/5.webp";
 ---
@@ -46,7 +46,11 @@ import bg5 from "../assets/img/5.webp";
         fetchpriority="high"
     />
 
-    <script type="application/ld+json" set:html={schema} slot="head" />
+    <script
+        type="application/ld+json"
+        set:html={JSON.stringify(schema)}
+        slot="head"
+    />
     <div class="col dark animated fadeIn">
         <MusicPlayer
             id="sadeh"

@@ -6,7 +6,7 @@ const title = "Contact – Shahram Gholampoor";
 const description =
     "Contact Shahram Gholampoor for inquiries and collaborations.";
 
-const schema = JSON.stringify({
+const schema = {
     "@context": "https://schema.org",
     "@type": "ContactPage",
     mainEntity: {
@@ -15,7 +15,7 @@ const schema = JSON.stringify({
         email: "info@shahramgholampoor.com",
         url: Astro.site,
     },
-});
+};
 
 import bg3 from "../assets/img/3.webp";
 ---
@@ -34,7 +34,11 @@ import bg3 from "../assets/img/3.webp";
         fetchpriority="high"
     />
 
-    <script type="application/ld+json" set:html={schema} slot="head" />
+    <script
+        type="application/ld+json"
+        set:html={JSON.stringify(schema)}
+        slot="head"
+    />
     <div class="contact">
         <div class="col info animated fadeIn delay-1s slow">
             <p><strong>Shahram Gholampoor</strong></p>

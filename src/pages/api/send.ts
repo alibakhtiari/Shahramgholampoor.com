@@ -1,5 +1,7 @@
 export const prerender = false;
 
+import { Buffer } from 'node:buffer';
+
 import type { APIRoute } from 'astro';
 import { Resend } from 'resend';
 

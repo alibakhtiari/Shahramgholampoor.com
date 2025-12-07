@@ -58,6 +58,8 @@ const { albumTitle, coverImage, tracks, appleMusicLink, id } = Astro.props;
 </div>
 
 <script define:vars={{ id }}>
+    let player;
+
     document.addEventListener("astro:page-load", async () => {
         const playerId = `player-${id}`;
         const playerElement = document.getElementById(playerId);
@@ -65,7 +67,7 @@ const { albumTitle, coverImage, tracks, appleMusicLink, id } = Astro.props;
 
         const { default: Plyr } = await import("plyr");
 
-        const player = new Plyr(`#${playerId}`, {
+        player = new Plyr(`#${playerId}`, {
             controls: ["play", "progress", "current-time", "mute", "volume"],
             invertTime: false,
             toggleInvert: false,
@@ -120,6 +122,12 @@ const { albumTitle, coverImage, tracks, appleMusicLink, id } = Astro.props;
                 }
             }
         });
+    });
+
+    document.addEventListener("astro:before-swap", () => {
+        if (player) {
+            player.destroy();
+        }
     });
 </script>
 

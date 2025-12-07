@@ -9,20 +9,18 @@ const initialVideo = videos[0];
 const description =
     "Watch selected video performances and compositions by Shahram Gholampoor.";
 
-const schema = JSON.stringify(
-    videos.map((video) => ({
-        "@context": "https://schema.org",
-        "@type": "VideoObject",
-        name: `Shahram Gholampoor - ${video.title}`,
-        description: `Performance or Composition: ${video.title}`,
-        thumbnailUrl: [new URL(video.thumb.src, Astro.site)],
-        uploadDate: "2024-01-01",
-        contentUrl: video.src.startsWith("http")
-            ? video.src
-            : new URL(video.src, Astro.site),
-        embedUrl: new URL("/video", Astro.site),
-    })),
-);
+const schema = videos.map((video) => ({
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    name: `Shahram Gholampoor - ${video.title}`,
+    description: `Performance or Composition: ${video.title}`,
+    thumbnailUrl: [new URL(video.thumb.src, Astro.site)],
+    uploadDate: "2024-01-01",
+    contentUrl: video.src.startsWith("http")
+        ? video.src
+        : new URL(video.src, Astro.site),
+    embedUrl: new URL("/video", Astro.site),
+}));
 ---
 
 <Layout
@@ -101,17 +99,23 @@ const schema = JSON.stringify(
             </div>
         </div>
     </div>
-    <script type="application/ld+json" set:html={schema} />
+    <script
+        type="application/ld+json"
+        set:html={JSON.stringify(schema)}
+        slot="head"
+    />
 </Layout>
 
 <script>
+    let player;
+
     document.addEventListener("astro:page-load", async () => {
         const videoElement = document.getElementById("main-video");
         if (!videoElement) return;
 
         const { default: Plyr } = await import("plyr");
 
-        const player = new Plyr("#main-video", {
+        player = new Plyr("#main-video", {
             controls: [
                 "play-large",
                 "play",
@@ -183,6 +187,12 @@ const schema = JSON.stringify(
         nextBtn?.addEventListener("click", () => {
             track.scrollBy({ left: scrollAmount, behavior: "smooth" });
         });
+    });
+
+    document.addEventListener("astro:before-swap", () => {
+        if (player) {
+            player.destroy();
+        }
     });
 </script>
 

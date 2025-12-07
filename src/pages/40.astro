@@ -11,7 +11,7 @@ const tracks = albums["40"];
 const description =
     "Listen to '40', a music album by Shahram Gholampoor featuring 14 original tracks.";
 
-const schema = JSON.stringify({
+const schema = {
     "@context": "https://schema.org",
     "@type": "MusicAlbum",
     name: "40",
@@ -26,7 +26,7 @@ const schema = JSON.stringify({
         name: t.title,
         position: i + 1,
     })),
-});
+};
 
 import bg4 from "../assets/img/4.webp";
 ---
@@ -46,7 +46,11 @@ import bg4 from "../assets/img/4.webp";
         fetchpriority="high"
     />
 
-    <script type="application/ld+json" set:html={schema} slot="head" />
+    <script
+        type="application/ld+json"
+        set:html={JSON.stringify(schema)}
+        slot="head"
+    />
     <div class="col animated fadeIn">
         <MusicPlayer
             id="40"
