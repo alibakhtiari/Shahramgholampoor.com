@@ -107,7 +107,7 @@ const schema = videos.map((video) => ({
 </Layout>
 
 <script>
-    let player;
+    let player: any;
 
     document.addEventListener("astro:page-load", async () => {
         const videoElement = document.getElementById("main-video");

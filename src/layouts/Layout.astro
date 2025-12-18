@@ -19,7 +19,8 @@ const {
     bodyClass = "home full-width",
     activePage = "home",
 } = Astro.props;
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const pathname = Astro.url.pathname.replace(/\.html$/, "").replace(/\/$/, "");
+const canonicalURL = new URL(pathname === "" ? "/" : pathname, Astro.site);
 ---
 
 <!doctype html>
