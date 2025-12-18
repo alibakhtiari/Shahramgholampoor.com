@@ -1,4 +1,5 @@
 import { Resend } from 'resend';
+import type { PagesFunction } from '@cloudflare/workers-types';
 
 interface Env {
     RESEND_API_KEY: string;
@@ -23,11 +24,12 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
                     message: 'Missing required fields',
                 }),
                 { status: 400, headers: { 'Content-Type': 'application/json' } }
-            );
+            ) as any;
         }
 
         let attachments: any[] = [];
-        if (file && file instanceof File && file.size > 0) {
+        // Safer check for file upload: verify it's not a string (as formData returns string | File) and has size
+        if (file && typeof file !== 'string' && file.size > 0) {
             const arrayBuffer = await file.arrayBuffer();
             // Use node:buffer (requires nodejs_compat flag in wrangler.toml/jsonc)
             const { Buffer } = await import('node:buffer');
@@ -59,7 +61,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
                     message: error.message,
                 }),
                 { status: 500, headers: { 'Content-Type': 'application/json' } }
-            );
+            ) as any;
         }
 
         return new Response(
@@ -68,13 +70,13 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
                 id: emailData?.id
             }),
             { status: 200, headers: { 'Content-Type': 'application/json' } }
-        );
+        ) as any;
     } catch (e: any) {
         return new Response(
             JSON.stringify({
                 message: 'Internal server error: ' + (e.message || String(e)),
             }),
             { status: 500, headers: { 'Content-Type': 'application/json' } }
-        );
+        ) as any;
     }
 };
