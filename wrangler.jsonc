@@ -3,8 +3,7 @@
   "name": "shahramgholampoor",
   "compatibility_date": "2025-12-04",
   "compatibility_flags": [
-    "nodejs_compat",
-    "global_fetch_strictly_public"
+    "nodejs_compat"
   ],
   "assets": {
     "binding": "ASSETS",

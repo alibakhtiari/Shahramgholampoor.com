@@ -29,16 +29,19 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
 
         let attachments: any[] = [];
         // Safer check for file upload: verify it's not a string (as formData returns string | File) and has size
-        if (file && typeof file !== 'string' && file.size > 0) {
-            const arrayBuffer = await file.arrayBuffer();
-            // Use node:buffer (requires nodejs_compat flag in wrangler.toml/jsonc)
-            const { Buffer } = await import('node:buffer');
-            const buffer = Buffer.from(arrayBuffer);
+        if (file && typeof file !== 'string') {
+            const fileObj = file as unknown as File;
+            if (fileObj.size > 0) {
+                const arrayBuffer = await fileObj.arrayBuffer();
+                // Use node:buffer (requires nodejs_compat flag in wrangler.toml/jsonc)
+                const { Buffer } = await import('node:buffer');
+                const buffer = Buffer.from(arrayBuffer);
 
-            attachments.push({
-                filename: file.name,
-                content: buffer,
-            });
+                attachments.push({
+                    filename: fileObj.name,
+                    content: buffer,
+                });
+            }
         }
 
         const { data: emailData, error } = await resend.emails.send({
