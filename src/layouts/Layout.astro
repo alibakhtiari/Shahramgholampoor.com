@@ -20,7 +20,7 @@ const {
     activePage = "home",
 } = Astro.props;
 const pathname = Astro.url.pathname.replace(/\.html$/, "").replace(/\/$/, "");
-const canonicalURL = new URL(pathname === "" ? "/" : pathname, Astro.site);
+const canonicalURL = new URL(pathname, Astro.site).href.replace(/\/$/, "");
 ---
 
 <!doctype html>
